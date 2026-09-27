@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AURA | Online Menu & WhatsApp Ordering</title>
-    <meta name="description" content="Order delicious gourmet burgers, wraps, visionary tacos, fries, pasta, sandwiches, desserts & drinks from AURA Lahore. Direct WhatsApp Delivery!">
+    <title>YUM WOK | Pan Asian • Lahore</title>
+    <meta name="description" content="YUM WOK Pan Asian Restaurant. Authentic Soups, Appetizers, Chowmein, Fried Rice, Kung Pao, Chilli Dry & Seafood in Lahore. Home Delivery & Take Away!">
     
-    <!-- Satoshi Font (Fontshare) -->
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,800,700,500,400,300&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Outfit & Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome Icons (Multi-CDN Fallback) -->
+    <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" crossorigin="anonymous" />
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,30 +21,35 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            posterGreen: '#043224',
-                            posterGreenHover: '#02241a',
-                            posterGreenLight: '#eef6f2',
-                            posterGreenBorder: '#a3c9b8',
+                        primary: '#ffffff',
+                        secondary: {
+                            DEFAULT: '#2E9578',
+                            hover: '#247861',
+                            dark: '#1b5c4a',
+                            light: '#edf8f5',
+                            border: '#a8dcce'
+                        },
+                        wok: {
+                            teal: '#2E9578',
+                            tealHover: '#247861',
+                            tealDark: '#1b5c4a',
+                            tealLight: '#edf8f5',
+                            tealBorder: '#a8dcce',
+                            amber: '#f59e0b',
                             dark: '#0f172a',
-                            muted: '#64748b',
-                            goldenBeigeBg: '#f3ebd9',
-                            goldenBeigeWhite: '#faf5e8',
-                            goldenBeigeCard: '#fefcf7',
-                            goldenBeigeCream: '#f5ede0',
-                            goldenBeigeBorder: '#e5d7c3',
-                            goldenBeigeInput: '#f2e8d4'
+                            bg: '#f8fafc',
+                            cardBg: '#ffffff',
+                            border: '#e2e8f0'
                         }
                     },
                     fontFamily: {
-                        sans: ['Satoshi', 'sans-serif'],
-                        display: ['Satoshi', 'sans-serif'],
-                        mono: ['Satoshi', 'sans-serif']
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.04)',
-                        'card': '0 4px 15px rgba(4, 50, 36, 0.08)',
-                        'floating': '0 10px 30px rgba(4, 50, 36, 0.45)',
+                        'card': '0 4px 15px rgba(46, 149, 120, 0.08)',
+                        'floating': '0 10px 30px rgba(46, 149, 120, 0.35)',
                         'modal': '0 25px 60px -15px rgba(15, 23, 42, 0.25)'
                     }
                 }
@@ -58,8 +64,8 @@
         }
 
         body {
-            background-color: #f3ebd9;
-            font-family: 'Satoshi', sans-serif;
+            background-color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: #0f172a;
             min-height: 100vh;
             margin: 0;
@@ -68,7 +74,6 @@
             justify-content: center;
         }
 
-        /* Ensure FontAwesome font family is not overwritten by global Satoshi font */
         .fa, .fas, .far, .fal, .fab, .fa-solid, .fa-regular, .fa-brands {
             font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif !important;
         }
@@ -78,24 +83,23 @@
 
         .app-wrapper {
             width: 100%;
-            max-width: 480px;
-            background-color: #faf5e8;
+            max-width: 500px;
+            background-color: #ffffff;
             min-height: 100vh;
             position: relative;
-            box-shadow: 0 0 50px rgba(140, 110, 50, 0.08);
+            box-shadow: 0 0 50px rgba(46, 149, 120, 0.06);
             display: flex;
             flex-direction: column;
-            border-left: 1px solid #e5d7c3;
-            border-right: 1px solid #e5d7c3;
+            border-left: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
         }
 
         @media (min-width: 1024px) {
             .app-wrapper {
-                max-width: 520px;
+                max-width: 540px;
             }
         }
 
-        /* Hide scrollbars */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -104,26 +108,34 @@
             scrollbar-width: none;
         }
 
-        /* UNIFIED POSTER DARK GREEN ACCENT ON ACTIVE CATEGORY PILL */
+        /* Active Category Pill Animation & Gradient using #2E9578 */
         .category-pill.active {
-            background: linear-gradient(135deg, #043224 0%, #02241a 100%);
-            color: #fefcf7 !important;
-            box-shadow: 0 6px 18px rgba(4, 50, 36, 0.35);
-            border-color: #043224;
+            background: linear-gradient(135deg, #2E9578 0%, #1b5c4a 100%);
+            color: #ffffff !important;
+            box-shadow: 0 6px 18px rgba(46, 149, 120, 0.35);
+            border-color: #1b5c4a;
             font-weight: 800;
         }
 
         .category-pill.active .cat-icon {
-            transform: scale(1.15);
+            transform: scale(1.12);
         }
 
-        .cart-badge-anim {
-            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .glass-header {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0.4); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        .glass-card-dark {
+            background: linear-gradient(135deg, #2E9578 0%, #175242 100%) !important;
+            backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(46, 149, 120, 0.35) !important;
+        }
+
+        .glass-card-light {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
         }
 
         .line-clamp-2 {
@@ -133,85 +145,122 @@
             overflow: hidden;
         }
 
-        /* Golden Beige White Glassmorphism Header & Single-Intensity Cards */
-        .glass-header {
-            background: rgba(250, 245, 232, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .glass-card-light {
-            background: rgba(254, 252, 247, 0.72) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(229, 215, 195, 0.85) !important;
-        }
-
-        .glass-card-dark {
-            background: rgba(4, 50, 36, 0.82) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(2, 36, 26, 0.4) !important;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 5px;
+            width: 4px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #d9ccb6;
+            background: #cbd5e1;
             border-radius: 4px;
+        }
+
+        /* Live Shop Status Pulse Lights */
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.75);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.75);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 7px rgba(239, 68, 68, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        .status-light-green {
+            background-color: #22c55e !important;
+            animation: pulse-green 1.8s infinite;
+        }
+
+        .status-light-red {
+            background-color: #ef4444 !important;
+            animation: pulse-red 1.8s infinite;
         }
     </style>
 </head>
-<body class="selection:bg-[#043224] selection:text-white">
+<body class="selection:bg-[#2E9578] selection:text-white">
 
     <div class="app-wrapper pb-32">
         
-        <!-- TOP STICKY HEADER (GOLDEN BEIGE WHITE & POSTER DARK GREEN LOGO) -->
-        <header class="sticky top-0 z-40 glass-header border-b border-[#e5d7c3] transition-all duration-200 pt-2 sm:pt-3">
-            <!-- Brand & Quick Actions (WhatsApp & Call) -->
-            <div class="px-4 pt-3 pb-2.5 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-2">
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <!-- POSTER DARK GREEN LOGO: AURA -->
-                            <h1 class="font-display font-black text-2xl text-[#043224] leading-none tracking-tight uppercase">
-                                AURA
-                            </h1>
-                            <span id="storeStatusBadge" class="inline-flex items-center gap-1 bg-[#eef6f2] border border-[#a3c9b8] text-[#043224] text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#043224] animate-pulse"></span>
-                                Open Now
-                            </span>
-                        </div>
-                        <p class="text-[11px] text-slate-600 font-medium mt-1 flex items-center gap-1">
-                            <i class="fa-regular fa-clock text-[10px] text-[#043224]"></i> House of Thinkers • Wapda Town Phase 1
-                        </p>
+        <!-- TOP STICKY HEADER -->
+        <header class="sticky top-0 z-40 glass-header border-b border-slate-200 transition-all duration-200 pt-2 sm:pt-3">
+            <!-- Brand & Quick Actions (WhatsApp & Contact) -->
+            <div class="px-4 pt-2.5 pb-2 flex items-center justify-between gap-2">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="font-display font-black text-2xl sm:text-3xl text-slate-900 leading-none tracking-tight">
+                            YUM <span class="text-[#2E9578]">WOK</span>
+                        </h1>
+                        <!-- Live Status Light Indicator (Green = Open, Red = Closed) -->
+                        <button 
+                            id="shopStatusBadge" 
+                            onclick="toggleShopStatus()" 
+                            title="Click to toggle or check Open/Closed status" 
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-sm active:scale-95"
+                        >
+                            <span id="shopStatusLight" class="w-2.5 h-2.5 rounded-full status-light-green inline-block shrink-0"></span>
+                            <span id="shopStatusText" class="tracking-wide">OPEN</span>
+                        </button>
                     </div>
+                    <p class="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1.5">
+                        <span class="text-[#2E9578] font-black tracking-wide uppercase">PAN ASIAN</span>
+                        <span>•</span>
+                        <span class="text-slate-600 truncate max-w-[170px] sm:max-w-none">Naseman e Iqbal, Lahore</span>
+                    </p>
                 </div>
 
-                <!-- Quick Action Buttons: Call & WhatsApp -->
+                <!-- Quick Action Buttons: Phone Modal & WhatsApp -->
                 <div class="flex items-center gap-2 shrink-0">
-                    <!-- Call Button -->
-                    <a href="tel:+923330654609" title="Call AURA House of Thinkers" class="w-9 h-9 rounded-full bg-[#f2e8d4] hover:bg-[#e9deb8] border border-[#dfcfb5] text-[#043224] flex items-center justify-center text-sm shadow-sm active:scale-95 transition">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                    <!-- WhatsApp Button -->
-                    <a href="https://wa.me/923330654609" target="_blank" title="WhatsApp Chat" class="w-9 h-9 rounded-full bg-[#043224] hover:bg-[#02241a] text-white flex items-center justify-center text-base shadow-md shadow-[#043224]/25 active:scale-95 transition">
+                    <!-- Phone Contacts Trigger -->
+                    <button onclick="togglePhoneModal()" title="Call YUM WOK" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 flex items-center justify-center text-sm shadow-sm active:scale-95 transition">
+                        <i class="fa-solid fa-phone text-[#2E9578]"></i>
+                    </button>
+                    <!-- WhatsApp Direct Order -->
+                    <a href="https://wa.me/923211003737" target="_blank" title="WhatsApp Order: 0321-1003737" class="w-9 h-9 rounded-full bg-[#2E9578] hover:bg-[#247861] text-white flex items-center justify-center text-base shadow-md shadow-[#2E9578]/30 active:scale-95 transition">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
+                </div>
+            </div>
+
+            <!-- Service Modes Notice & Operating Timing Info -->
+            <div class="px-4 pb-2 flex items-center justify-between text-[11px] font-bold text-slate-600 border-t border-slate-100 pt-1.5">
+                <div class="flex items-center gap-1.5 text-[#2E9578] font-extrabold">
+                    <i class="fa-solid fa-motorcycle"></i>
+                    <span>HOME DELIVERY &amp; TAKE AWAY</span>
+                </div>
+                <div class="flex items-center gap-1 text-slate-500 text-[10px]" id="shopHoursNoticeContainer">
+                    <span id="shopHoursDot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+                    <span id="shopHoursNotice">12:00 PM – 01:00 AM</span>
                 </div>
             </div>
 
             <!-- Search Input Box -->
             <div class="px-4 pb-2.5">
                 <div class="relative flex items-center">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-[#043224]/60 text-sm"></i>
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-sm"></i>
                     <input 
                         type="text" 
                         id="searchInput" 
-                        placeholder="Search menu (e.g. burger, tacos, wrap, fries, margarita)..." 
-                        class="w-full bg-[#f3ead8] text-slate-900 text-xs font-medium placeholder-slate-400 pl-9 pr-8 py-2.5 rounded-xl border border-[#dfcfb5] focus:outline-none focus:border-[#043224] focus:ring-2 focus:ring-[#043224]/20 transition shadow-inner"
+                        placeholder="Search menu (e.g. Chowmein, Kung Pao, Soup, Rice, Prawns)..." 
+                        class="w-full bg-slate-50 text-slate-900 text-xs font-medium placeholder-slate-400 pl-9 pr-8 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#2E9578] focus:ring-2 focus:ring-[#2E9578]/20 transition shadow-inner"
                         oninput="handleSearch(this.value)"
                     >
                     <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 text-slate-400 hover:text-slate-700">
@@ -226,29 +275,40 @@
             </div>
         </header>
 
-        <!-- HERO HIGHLIGHT CAROUSEL / FEATURED SPECIAL (THE BIG POSTER WITH DARK GREEN BG) -->
+        <!-- HERO HIGHLIGHT CAROUSEL / FEATURED SPECIAL -->
         <div class="px-4 py-3" id="heroBanner">
-            <div class="glass-card-dark rounded-2xl p-4 text-white relative overflow-hidden shadow-md flex items-center justify-between">
+            <div class="glass-card-dark rounded-2xl p-4 text-white relative overflow-hidden shadow-lg flex items-center justify-between">
                 <div class="relative z-10 max-w-[62%]">
-                    <span class="bg-[#02241a] text-[#f2e8d4] border border-[#043224] text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
-                        AURA SIGNATURE
+                    <span class="bg-white text-[#1b5c4a] font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
+                        CHEF RECOMMENDED
                     </span>
                     <h3 class="font-display text-base font-black leading-tight text-white drop-shadow-sm">
-                        Visionary Mexican Tacos
+                        Kung Pao Wok Classic
                     </h3>
-                    <p class="text-[11px] text-[#f2e8d4]/90 font-medium mt-0.5 mb-2.5 line-clamp-2">
-                        Authentic Mexican style tacos packed with seasoned chicken, salsa & special cream!
+                    <p class="text-[11px] text-emerald-100 font-medium mt-0.5 mb-2.5 line-clamp-2">
+                        Authentic Szechuan chili glaze, peanuts, bell peppers with choice of Rice or Chowmein!
                     </p>
-                    <button onclick="openItemModalById('visionary_tacos')" class="bg-[#02241a] hover:bg-[#011711] text-[#fefcf7] text-xs font-black px-3.5 py-1.5 rounded-xl shadow-md active:scale-95 transition flex items-center gap-1.5 border border-[#043224]">
-                        Order For PKR 870/- <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <button onclick="openItemModalById('kung_pao')" class="bg-white hover:bg-emerald-50 text-[#1b5c4a] font-black text-xs px-3.5 py-1.5 rounded-xl shadow-md active:scale-95 transition flex items-center gap-1.5">
+                        Order Single • PKR 700/- <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
                 <div class="relative z-10 shrink-0 w-28 h-28 -mr-2">
                     <img 
-                        src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=300&q=80" 
-                        alt="Visionary Mexican Tacos"
-                        class="w-full h-full object-cover rounded-2xl shadow-xl rotate-3 border-2 border-[#02241a]" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=80'"
+                        src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=300&q=80" 
+                        alt="Kung Pao Chicken"
+                        class="w-full h-full object-cover rounded-2xl shadow-2xl rotate-2 border-2 border-emerald-200/50" 
+                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=300&q=80'"
                     >
+                </div>
+            </div>
+        </div>
+
+        <!-- SPECIAL NOTE CALLOUT FOR MAIN COURSES -->
+        <div class="px-4 pb-2">
+            <div class="bg-[#edf8f5] border border-[#a8dcce] rounded-xl p-2.5 flex items-start gap-2 text-xs text-[#1b5c4a] shadow-sm">
+                <i class="fa-solid fa-bowl-rice text-[#2E9578] text-sm mt-0.5 shrink-0"></i>
+                <div class="text-[11px] leading-tight">
+                    <strong class="font-extrabold text-[#0f3d30]">Special Main Course Offer:</strong> All Single entries are served with your choice of <span class="font-bold underline">Egg Fried Rice</span>, <span class="font-bold underline">Vegetable Fried Rice</span>, or <span class="font-bold underline">Vegetable Chowmein</span>!
                 </div>
             </div>
         </div>
@@ -258,87 +318,114 @@
             <h2 class="text-sm font-black text-slate-900 font-display flex items-center gap-2" id="currentSectionTitle">
                 All Menu Items
             </h2>
-            <span id="currentSectionBadge" class="text-[11px] font-bold text-[#043224] bg-[#f2e8d4] px-2.5 py-0.5 rounded-full border border-[#dfcfb5]">
-                Full Menu
+            <span id="currentSectionBadge" class="text-[11px] font-bold text-[#2E9578] bg-[#edf8f5] border border-[#a8dcce] px-2.5 py-0.5 rounded-full">
+                Full Pan Asian Menu
             </span>
         </div>
 
         <!-- MAIN PRODUCTS CONTAINER -->
-        <main class="px-4 space-y-4 pt-1" id="menuContainer">
+        <main class="px-4 space-y-3.5 pt-1" id="menuContainer">
             <!-- Rendered by JavaScript -->
         </main>
 
         <!-- EMPTY SEARCH STATE -->
         <div id="emptySearchState" class="hidden py-16 text-center px-4">
-            <div class="w-16 h-16 bg-[#f2e8d4] text-[#043224] border border-[#dfcfb5] rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-3 border border-slate-200">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <h3 class="font-bold text-slate-900 text-base">No items found</h3>
-            <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">We couldn't find anything matching your search. Try searching for "burger", "tacos", "wrap", "fries", or "margarita".</p>
-            <button onclick="clearSearch()" class="mt-4 bg-[#043224] hover:bg-[#02241a] text-white text-xs font-black px-4 py-2 rounded-xl shadow-sm">
+            <h3 class="font-bold text-slate-900 text-base">No dishes found</h3>
+            <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">We couldn't find any dishes matching your search. Try searching for "Chowmein", "Kung Pao", "Momos", "Soup", or "Chilli Dry".</p>
+            <button onclick="clearSearch()" class="mt-4 bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-4 py-2 rounded-xl shadow-sm">
                 Show Full Menu
             </button>
         </div>
 
-        <!-- STORE INFO BANNER / STATS (MOVED TO BOTTOM END OF HOME PAGE) -->
+        <!-- STORE INFO BANNER / STATS & FOOTER -->
         <div class="px-4 pt-6 pb-28" id="storeInfoBanner">
-            <div class="glass-card-dark rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
-                <div class="absolute -right-8 -bottom-8 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="relative z-10">
-                    <div class="flex items-start justify-between gap-2 mb-2.5">
+            <div class="glass-card-dark rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="relative z-10 space-y-4">
+                    <!-- Name & Subtitle -->
+                    <div class="flex items-start justify-between gap-2 border-b border-white/20 pb-3">
                         <div>
-                            <div class="flex items-center gap-1.5 text-xs font-bold text-[#f2e8d4] uppercase tracking-wide mb-0.5">
-                                <i class="fa-solid fa-location-dot text-white"></i> 92 H1, Wapda Town Phase 1, Lahore
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-display font-black text-2xl tracking-tight text-white">YUM WOK</h3>
+                                <span class="bg-white text-[#1b5c4a] text-[10px] font-black px-2 py-0.5 rounded uppercase">Pan Asian</span>
                             </div>
-                            <p class="text-[11px] text-white/90">AURA House of Thinkers • Gourmet Food & Thought Bar</p>
+                            <p class="text-xs text-emerald-100 font-bold tracking-wider mt-0.5 uppercase">PAN ASIAN</p>
                         </div>
-                        <span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shrink-0 border border-white/30">
-                            +92 333 0654609
+                        <span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full shrink-0 border border-white/30">
+                            Delivery &amp; Take Away
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2 pt-2.5 border-t border-white/20 text-center text-[10px]">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl py-1.5 px-1 border border-white/15">
-                            <span class="text-white block font-black text-xs">FAST</span>
-                            <span class="text-[#f2e8d4]">Home Delivery</span>
+                    <!-- Address & Location -->
+                    <div class="space-y-1.5 text-xs text-emerald-50">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-white mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-white block font-bold">Address:</strong>
+                                <span>NASEMAN E IQBAL FOOD COURT, NEAR MAIN SOCIETY OFFICE, LAHORE</span>
+                            </div>
                         </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl py-1.5 px-1 border border-white/15">
-                            <span class="text-white block font-black text-xs">GOURMET</span>
-                            <span class="text-[#f2e8d4]">Fresh Flavors</span>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-sm rounded-xl py-1.5 px-1 border border-white/15">
-                            <span class="text-white block font-black text-xs">0333-0654609</span>
-                            <span class="text-[#f2e8d4]">Order Hotline</span>
+
+                    <!-- Quality Promise Badges -->
+                    <div class="pt-2 border-t border-white/20">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-100 block mb-2">Our Quality Promise:</span>
+                        <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-leaf text-emerald-200 text-sm mb-1"></i>
+                                <span class="text-white font-bold">Fresh</span>
+                                <span class="text-emerald-100 text-[9px]">Ingredients</span>
+                            </div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-utensils text-emerald-200 text-sm mb-1"></i>
+                                <span class="text-white font-bold">Authentic</span>
+                                <span class="text-emerald-100 text-[9px]">Flavors</span>
+                            </div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-user-tie text-emerald-200 text-sm mb-1"></i>
+                                <span class="text-white font-bold">Expert</span>
+                                <span class="text-emerald-100 text-[9px]">Pan Chef</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <p class="text-[11px] text-slate-500 font-medium text-center mt-3">
-                © AURA House of Thinkers • 92 H1 Wapda Town Phase 1, Lahore
-            </p>
+            <!-- Under Footer: Clickable WhatsApp Attribution for Talha Muzammil -->
+            <div class="text-center mt-5">
+                <a href="https://wa.me/923294355677" target="_blank" class="inline-block group py-1 px-3 rounded-xl hover:bg-slate-100 transition">
+                    <span class="text-xs font-semibold text-slate-600 group-hover:text-[#2E9578] transition block">
+                        Designed by <strong class="text-slate-900 group-hover:text-[#2E9578] font-bold underline decoration-[#2E9578]/40">Talha Muzammil</strong>
+                    </span>
+                    <span class="text-[10px] text-slate-400 group-hover:text-[#2E9578] font-medium flex items-center justify-center gap-1 mt-0.5 transition">
+                        <i class="fa-brands fa-whatsapp text-xs text-[#2E9578]"></i> Click to contact
+                    </span>
+                </a>
+            </div>
         </div>
 
-        <!-- FLOATING BOTTOM BASKET BAR (POSTER DARK GREEN ACCENT) -->
+        <!-- FLOATING BOTTOM BASKET BAR -->
         <div id="floatingCartBar" class="fixed bottom-0 left-0 right-0 z-50 flex justify-center p-3 pointer-events-none transition-all duration-300 transform translate-y-24 opacity-0">
-            <div class="w-full max-w-[480px] pointer-events-auto">
+            <div class="w-full max-w-[500px] pointer-events-auto">
                 <button 
                     onclick="openCartDrawer()" 
-                    class="w-full glass-card-dark text-white rounded-2xl p-3.5 shadow-floating flex items-center justify-between active:scale-[0.98] transition"
+                    class="w-full bg-gradient-to-r from-[#1b5c4a] via-[#2E9578] to-[#2E9578] text-white rounded-2xl p-3.5 shadow-floating flex items-center justify-between active:scale-[0.98] transition border border-[#a8dcce]/30"
                 >
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-[#fefcf7] text-[#043224] flex items-center justify-center font-black text-sm relative shadow-sm">
-                            <i class="fa-solid fa-bag-shopping text-base"></i>
-                            <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-[#02241a] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#fefcf7] shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-white text-[#2E9578] flex items-center justify-center font-black text-sm relative shadow-sm">
+                            <i class="fa-solid fa-basket-shopping text-base"></i>
+                            <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-[#1b5c4a] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                                 0
                             </span>
                         </div>
                         <div class="text-left">
-                            <span class="text-[10px] font-bold text-[#f2e8d4] uppercase tracking-wider block">View Your Basket</span>
+                            <span class="text-[10px] font-extrabold text-emerald-100 uppercase tracking-wider block">Your Pan Asian Basket</span>
                             <span class="text-base font-black tracking-tight text-white" id="floatingCartTotal">PKR 0/-</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 font-black text-xs bg-[#fefcf7] text-[#043224] px-3.5 py-2 rounded-xl shadow-sm hover:bg-[#f5ede0] transition">
+                    <div class="flex items-center gap-2 font-black text-xs bg-white text-[#2E9578] px-3.5 py-2 rounded-xl shadow-sm hover:bg-emerald-50 transition">
                         <span>Checkout</span>
                         <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </div>
@@ -348,22 +435,71 @@
 
     </div>
 
+    <!-- PHONE CONTACTS MODAL -->
+    <div id="phoneModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 p-4">
+        <div class="w-full max-w-xs bg-white border border-slate-200 rounded-3xl p-5 text-center shadow-modal transform scale-95 transition-all duration-300" id="phoneModalCard">
+            <div class="w-12 h-12 bg-[#edf8f5] text-[#2E9578] rounded-2xl flex items-center justify-center text-xl mx-auto mb-3 border border-[#a8dcce]">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="font-display font-black text-lg text-slate-900">Contact YUM WOK</h3>
+            <p class="text-xs text-slate-500 mt-0.5 mb-4">Choose a number for direct phone call or WhatsApp order:</p>
+            
+            <div class="space-y-2.5 text-left mb-4">
+                <!-- Contact 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Primary Hotline</span>
+                        <strong class="text-sm font-black text-slate-900">0321-1003737</strong>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <a href="tel:03211003737" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <a href="https://wa.me/923211003737" target="_blank" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Secondary Line</span>
+                        <strong class="text-sm font-black text-slate-900">0316-9263696</strong>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <a href="tel:03169263696" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <a href="https://wa.me/923169263696" target="_blank" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="togglePhoneModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 rounded-xl">
+                Close
+            </button>
+        </div>
+    </div>
+
     <!-- ITEM DETAIL / CUSTOMIZATION MODAL -->
     <div id="itemModal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
-        <div class="w-full max-w-[480px] bg-[#faf5e8] border border-[#e5d7c3] rounded-t-[32px] sm:rounded-3xl max-h-[90vh] flex flex-col shadow-modal transform translate-y-full transition-transform duration-300" id="itemModalCard">
+        <div class="w-full max-w-[500px] bg-white border border-slate-200 rounded-t-[32px] sm:rounded-3xl max-h-[90vh] flex flex-col shadow-modal transform translate-y-full transition-transform duration-300" id="itemModalCard">
             <!-- Modal Header with Image -->
-            <div class="relative h-48 sm:h-52 w-full shrink-0 bg-slate-100 rounded-t-[32px] sm:rounded-t-3xl overflow-hidden">
-                <img id="modalItemImage" src="" alt="Food Item" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80'">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
-                <button onclick="closeItemModal()" class="absolute top-4 right-4 w-9 h-9 bg-[#fefcf7]/90 hover:bg-[#fefcf7] text-slate-800 rounded-full flex items-center justify-center backdrop-blur-md transition border border-[#e5d7c3] shadow-sm">
+            <div class="relative h-48 sm:h-52 w-full shrink-0 bg-slate-900 rounded-t-[32px] sm:rounded-t-3xl overflow-hidden">
+                <img id="modalItemImage" src="" alt="Asian Dish" class="w-full h-full object-cover opacity-90" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80'">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+                <button onclick="closeItemModal()" class="absolute top-4 right-4 w-9 h-9 bg-white/90 hover:bg-white text-slate-800 rounded-full flex items-center justify-center backdrop-blur-md transition border border-slate-200 shadow-sm">
                     <i class="fa-solid fa-xmark text-base"></i>
                 </button>
                 <div class="absolute bottom-3 left-4 right-4 text-white">
-                    <span id="modalItemCategoryBadge" class="text-[10px] font-black uppercase bg-[#043224] text-white px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
+                    <span id="modalItemCategoryBadge" class="text-[10px] font-black uppercase bg-[#2E9578] text-white px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
                         Category
                     </span>
                     <h3 id="modalItemTitle" class="font-display font-black text-xl leading-tight text-white drop-shadow-sm">Item Name</h3>
-                    <p id="modalItemDesc" class="text-xs text-slate-200 line-clamp-2 mt-0.5">Item description goes here</p>
+                    <p id="modalItemDesc" class="text-xs text-emerald-100 line-clamp-2 mt-0.5">Item description goes here</p>
                 </div>
             </div>
 
@@ -373,22 +509,22 @@
             </div>
 
             <!-- Modal Footer (Quantity & Add to Cart) -->
-            <div class="p-4 border-t border-[#e5d7c3] bg-[#f5ede0] rounded-b-[32px] sm:rounded-b-3xl flex items-center justify-between gap-3">
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-[32px] sm:rounded-b-3xl flex items-center justify-between gap-3">
                 <!-- Qty buttons -->
-                <div class="flex items-center bg-[#fefcf7] rounded-xl border border-[#dfcfb5] p-1 shadow-sm">
-                    <button onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg bg-[#f3ead8] hover:bg-[#ebdcc4] text-slate-800 flex items-center justify-center text-xs font-bold active:scale-95 transition">
+                <div class="flex items-center bg-white rounded-xl border border-slate-300 p-1 shadow-sm">
+                    <button onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center text-xs font-bold active:scale-95 transition">
                         <i class="fa-solid fa-minus"></i>
                     </button>
-                    <span id="modalQtyDisplay" class="w-8 text-center font-black text-sm text-[#043224]">1</span>
-                    <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg bg-[#043224] text-white flex items-center justify-center text-xs font-black active:scale-95 transition">
+                    <span id="modalQtyDisplay" class="w-8 text-center font-black text-sm text-[#2E9578]">1</span>
+                    <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg bg-[#2E9578] text-white flex items-center justify-center text-xs font-black active:scale-95 transition">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
 
                 <!-- Add Button -->
-                <button id="modalAddToCartBtn" onclick="confirmAddToCart()" class="flex-1 bg-[#043224] hover:bg-[#02241a] text-white font-black text-xs py-3.5 px-4 rounded-xl shadow-md flex items-center justify-between active:scale-[0.98] transition">
-                    <span>Add To Order</span>
-                    <span id="modalFinalPrice" class="bg-white/20 px-2 py-0.5 rounded-lg text-white font-extrabold">PKR 0/-</span>
+                <button id="modalAddToCartBtn" onclick="confirmAddToCart()" class="flex-1 bg-[#2E9578] hover:bg-[#247861] text-white font-black text-xs py-3.5 px-4 rounded-xl shadow-md flex items-center justify-between active:scale-[0.98] transition">
+                    <span>Add To Pan Asian Basket</span>
+                    <span id="modalFinalPrice" class="bg-white/20 px-2.5 py-0.5 rounded-lg text-white font-extrabold">PKR 0/-</span>
                 </button>
             </div>
         </div>
@@ -396,19 +532,19 @@
 
     <!-- CART & CHECKOUT DRAWER -->
     <div id="cartDrawer" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
-        <div class="w-full max-w-[480px] bg-[#faf5e8] border border-[#e5d7c3] rounded-t-[32px] sm:rounded-3xl max-h-[92vh] h-full flex flex-col shadow-modal transform translate-y-full transition-transform duration-300" id="cartDrawerCard">
+        <div class="w-full max-w-[500px] bg-white border border-slate-200 rounded-t-[32px] sm:rounded-3xl max-h-[92vh] h-full flex flex-col shadow-modal transform translate-y-full transition-transform duration-300" id="cartDrawerCard">
             <!-- Header -->
-            <div class="px-4 py-3.5 border-b border-[#e5d7c3] flex items-center justify-between bg-[#f5ede0] rounded-t-[32px] sm:rounded-t-3xl">
-                <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-[#eef6f2] border border-[#a3c9b8] text-[#043224] flex items-center justify-center text-sm">
-                        <i class="fa-solid fa-bag-shopping"></i>
+            <div class="px-4 py-3.5 border-b border-slate-200 flex items-center justify-between bg-slate-50 rounded-t-[32px] sm:rounded-t-3xl">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-[#edf8f5] border border-[#a8dcce] text-[#2E9578] flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-basket-shopping"></i>
                     </div>
                     <div>
-                        <h3 class="font-display font-black text-base text-slate-900">Your Order Basket</h3>
-                        <span id="drawerItemCountText" class="text-[11px] text-slate-500 font-medium">0 items selected</span>
+                        <h3 class="font-display font-black text-base text-slate-900">YUM WOK Order Basket</h3>
+                        <span id="drawerItemCountText" class="text-[11px] text-slate-500 font-semibold">0 dishes selected</span>
                     </div>
                 </div>
-                <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-[#f3ead8] text-slate-700 hover:bg-[#e9deb8] flex items-center justify-center transition border border-[#dfcfb5]">
+                <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
@@ -422,79 +558,115 @@
 
                 <!-- Empty Cart View -->
                 <div id="emptyCartView" class="hidden py-12 text-center">
-                    <div class="w-16 h-16 bg-[#f2e8d4] text-[#043224] border border-[#dfcfb5] rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
-                        <i class="fa-solid fa-basket-shopping"></i>
+                    <div class="w-16 h-16 bg-[#edf8f5] text-[#2E9578] border border-[#a8dcce] rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                        <i class="fa-solid fa-bowl-rice"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 text-base">Your basket is empty</h4>
-                    <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Explore our menu and add your favorite burgers, wraps, tacos, pasta or drinks!</p>
-                    <button onclick="closeCartDrawer()" class="mt-4 bg-[#043224] text-white text-xs font-black px-5 py-2.5 rounded-xl shadow-md hover:bg-[#02241a]">
-                        Browse Menu
+                    <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Explore our Pan Asian delicacies and add delicious Soups, Chowmein, Kung Pao, Chilli Dry or Momos!</p>
+                    <button onclick="closeCartDrawer()" class="mt-4 bg-[#2E9578] text-white text-xs font-black px-5 py-2.5 rounded-xl shadow-md hover:bg-[#247861]">
+                        Browse Pan Asian Menu
                     </button>
                 </div>
 
                 <!-- Checkout Form & Details -->
-                <div id="checkoutFormSection" class="pt-2 space-y-3.5 border-t border-[#e5d7c3]">
-                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-[#043224] flex items-center gap-1.5">
-                        <i class="fa-solid fa-location-dot text-[#043224]"></i> Delivery Address & Payment
+                <div id="checkoutFormSection" class="pt-2 space-y-3.5 border-t border-slate-200">
+                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-[#2E9578] flex items-center gap-1.5">
+                        <i class="fa-solid fa-motorcycle text-[#2E9578]"></i> Order Service &amp; Address
                     </h4>
 
-                    <!-- Delivery Address Input Field -->
+                    <!-- Service Type Selector (Delivery / Take Away) -->
+                    <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+                        <button type="button" onclick="selectServiceType('Home Delivery')" id="serviceBtnDelivery" class="p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                            <span>Home Delivery</span>
+                        </button>
+                        <button type="button" onclick="selectServiceType('Take Away')" id="serviceBtnTakeAway" class="p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                            <span>Take Away</span>
+                        </button>
+                    </div>
+
+                    <!-- Customer Contact & Address Input Fields -->
                     <div class="space-y-2.5 text-xs">
+                        <div>
+                            <label class="block text-slate-800 font-bold mb-1">
+                                Customer Name <span class="text-[#2E9578]">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="custName" 
+                                placeholder="Your Name" 
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
+                            >
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-800 font-bold mb-1">
+                                Phone Number <span class="text-[#2E9578]">*</span>
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="custPhone" 
+                                placeholder="e.g. 0321-XXXXXXX" 
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
+                            >
+                        </div>
+
                         <div id="addressFieldContainer">
                             <label class="block text-slate-800 font-bold mb-1">
-                                Delivery Address & Landmark <span class="text-[#043224]">*</span>
+                                Delivery Address / Landmark <span class="text-[#2E9578]">*</span>
                             </label>
                             <textarea 
                                 id="custAddress" 
-                                rows="3" 
-                                placeholder="House #, Street #, Block / Phase (e.g. 92 H1, Wapda Town Phase 1, Lahore)" 
-                                class="w-full bg-[#f3ead8] text-slate-900 border-2 border-[#a3c9b8] focus:border-[#043224] rounded-xl px-3 py-2.5 text-xs focus:outline-none placeholder-slate-400 shadow-inner"
+                                rows="2" 
+                                placeholder="House / Flat #, Street, Phase / Area (e.g. Naseman e Iqbal, Wapda Town, Lahore)" 
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none placeholder-slate-400 shadow-inner"
                             ></textarea>
                         </div>
 
                         <!-- Special Instructions -->
                         <div>
-                            <label class="block text-slate-700 font-semibold mb-1">Special Instructions (Optional)</label>
-                            <input type="text" id="custNotes" placeholder="e.g. Extra spicy, less mayo, call on arrival" class="w-full bg-[#f3ead8] text-slate-900 border border-[#dfcfb5] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#043224]">
+                            <label class="block text-slate-700 font-semibold mb-1">Kitchen Instructions (Optional)</label>
+                            <input type="text" id="custNotes" placeholder="e.g. Extra spicy, extra cutlery, less chili" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#2E9578]">
                         </div>
 
                         <!-- Payment Method Selector -->
                         <div>
                             <label class="block text-slate-700 font-semibold mb-1">Select Payment Method</label>
-                            <select id="custPayment" onchange="handlePaymentChange(this.value)" class="w-full bg-[#f3ead8] text-slate-900 border border-[#dfcfb5] rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#043224] font-medium">
+                            <select id="custPayment" onchange="handlePaymentChange(this.value)" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#2E9578] font-medium">
                                 <option value="Cash on Delivery" selected>Cash on Delivery (COD)</option>
-                                <option value="Bank / EasyPaisa / JazzCash Transfer">Bank / EasyPaisa / JazzCash Transfer (Manual)</option>
+                                <option value="EasyPaisa / JazzCash / Bank Transfer">Online Transfer / EasyPaisa / JazzCash</option>
                             </select>
                         </div>
 
                         <!-- PAYMENT ACCOUNTS DETAILS CARD WITH 1-CLICK COPY BUTTONS -->
-                        <div id="onlinePaymentCard" class="hidden bg-[#f5ede0] border-2 border-[#a3c9b8] rounded-2xl p-3.5 space-y-3 shadow-sm">
-                            <div class="flex items-center justify-between border-b border-[#e5d7c3] pb-2">
+                        <div id="onlinePaymentCard" class="hidden bg-[#edf8f5] border border-[#a8dcce] rounded-2xl p-3.5 space-y-3 shadow-sm">
+                            <div class="flex items-center justify-between border-b border-[#a8dcce]/60 pb-2">
                                 <div class="flex items-center gap-2">
-                                    <span class="w-7 h-7 rounded-lg bg-[#043224] text-white flex items-center justify-center font-black text-xs">
-                                        <i class="fa-solid fa-building-columns"></i>
+                                    <span class="w-7 h-7 rounded-lg bg-[#2E9578] text-white flex items-center justify-center font-black text-xs">
+                                        <i class="fa-solid fa-money-bill-transfer"></i>
                                     </span>
                                     <div>
-                                        <h5 class="text-xs font-black text-slate-900">Manual Payment Transfer</h5>
-                                        <span class="text-[10px] text-slate-500">Account Title: <strong class="text-slate-900 font-bold">AURA House of Thinkers</strong></span>
+                                        <h5 class="text-xs font-black text-slate-900">Direct Online Account</h5>
+                                        <span class="text-[10px] text-slate-600">Account: <strong class="text-slate-900 font-bold">YUM WOK Pan Asian</strong></span>
                                     </div>
                                 </div>
-                                <span class="text-[9px] font-black uppercase tracking-wider bg-[#eef6f2] text-[#043224] border border-[#a3c9b8] px-2 py-0.5 rounded">
+                                <span class="text-[9px] font-black uppercase tracking-wider bg-white text-[#2E9578] border border-[#a8dcce] px-2 py-0.5 rounded">
                                     Active
                                 </span>
                             </div>
 
-                            <!-- EasyPaisa / JazzCash / Mobile Account -->
-                            <div class="bg-[#fefcf7] p-2.5 rounded-xl border border-[#dfcfb5] flex items-center justify-between gap-2">
+                            <!-- Account 1 -->
+                            <div class="bg-white p-2.5 rounded-xl border border-[#a8dcce] flex items-center justify-between gap-2">
                                 <div class="min-w-0 flex-1">
-                                    <span class="text-[10px] text-slate-500 block font-medium">EasyPaisa / JazzCash • Title: AURA</span>
-                                    <span class="text-xs font-black text-[#043224] tracking-wider font-mono block" id="accNumber1">03330654609</span>
+                                    <span class="text-[10px] text-slate-500 block font-medium">EasyPaisa / JazzCash • 0321-1003737</span>
+                                    <span class="text-xs font-black text-[#2E9578] tracking-wider font-mono block">03211003737</span>
                                 </div>
                                 <button 
                                     type="button"
-                                    onclick="copyToClipboard('03330654609', 'accBtn1')" 
+                                    onclick="copyToClipboard('03211003737', 'accBtn1')" 
                                     id="accBtn1"
-                                    class="bg-[#043224] hover:bg-[#02241a] text-white text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition shadow-sm shrink-0"
+                                    class="bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition shadow-sm shrink-0"
                                 >
                                     <i class="fa-regular fa-copy"></i>
                                     <span>Copy</span>
@@ -502,43 +674,43 @@
                             </div>
 
                             <p class="text-[10px] text-slate-500 italic text-center">
-                                * Transfer payment manually & share receipt screenshot on WhatsApp after placing order below.
+                                * Transfer payment & share screenshot on WhatsApp after order submission.
                             </p>
                         </div>
                     </div>
 
                     <!-- Bill Summary -->
-                    <div class="bg-[#f5ede0] rounded-2xl p-3.5 space-y-2 border border-[#e5d7c3] text-xs">
+                    <div class="bg-slate-50 rounded-2xl p-3.5 space-y-2 border border-slate-200 text-xs">
                         <div class="flex justify-between text-slate-600">
                             <span>Subtotal</span>
                             <span class="font-bold text-slate-900" id="billSubtotal">PKR 0/-</span>
                         </div>
                         <div class="flex justify-between text-slate-600">
                             <span class="flex items-center gap-1">
-                                Delivery Fee <span class="text-[10px] text-[#043224] font-bold bg-[#eef6f2] border border-[#a3c9b8] px-1.5 py-0.2 rounded">Standard Home Delivery</span>
+                                Order Mode: <span class="text-[10px] text-[#2E9578] font-bold bg-[#edf8f5] border border-[#a8dcce] px-1.5 py-0.2 rounded" id="billServiceModeText">Home Delivery</span>
                             </span>
-                            <span class="font-bold text-[#043224]">Calculated on Order</span>
+                            <span class="font-bold text-slate-800" id="deliveryFeeLabel">Calculated on Order</span>
                         </div>
-                        <div class="pt-2 border-t border-[#e5d7c3] flex justify-between items-center">
+                        <div class="pt-2 border-t border-slate-200 flex justify-between items-center">
                             <div>
-                                <span class="font-black text-slate-900 text-sm block">Total Bill</span>
-                                <span class="text-[10px] text-slate-500">All items included</span>
+                                <span class="font-black text-slate-900 text-sm block">Estimated Total</span>
+                                <span class="text-[10px] text-slate-500">Freshly prepared & packed</span>
                             </div>
-                            <span class="font-black text-[#043224] text-lg font-display" id="billTotal">PKR 0/-</span>
+                            <span class="font-black text-[#2E9578] text-lg font-display" id="billTotal">PKR 0/-</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Drawer Footer Buttons -->
-            <div class="p-4 border-t border-[#e5d7c3] bg-[#f5ede0] rounded-b-[32px] sm:rounded-b-3xl" id="drawerFooterActions">
+            <div class="p-4 border-t border-slate-200 bg-slate-50 rounded-b-[32px] sm:rounded-b-3xl" id="drawerFooterActions">
                 <button 
                     onclick="submitOrderToWhatsApp()" 
                     id="submitWhatsappBtn"
-                    class="w-full bg-[#043224] hover:bg-[#02241a] text-white font-black text-sm py-4 px-4 rounded-xl shadow-lg shadow-[#043224]/25 flex items-center justify-center gap-2 active:scale-[0.98] transition"
+                    class="w-full bg-[#2E9578] hover:bg-[#247861] text-white font-black text-sm py-4 px-4 rounded-xl shadow-lg shadow-[#2E9578]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition"
                 >
                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Send Order via WhatsApp</span>
+                    <span>Send Order via WhatsApp (0321-1003737)</span>
                 </button>
             </div>
         </div>
@@ -546,402 +718,498 @@
 
     <!-- ORDER SUCCESS MODAL -->
     <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 p-4">
-        <div class="w-full max-w-sm bg-[#faf5e8] border border-[#e5d7c3] rounded-3xl p-6 text-center shadow-modal transform scale-95 transition-all duration-300" id="successModalCard">
-            <div class="w-16 h-16 bg-[#eef6f2] border border-[#a3c9b8] text-[#043224] rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
+        <div class="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-modal transform scale-95 transition-all duration-300" id="successModalCard">
+            <div class="w-16 h-16 bg-[#edf8f5] border border-[#a8dcce] text-[#2E9578] rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="font-display font-black text-xl text-slate-900">Order Sent!</h3>
-            <p class="text-xs text-slate-600 mt-1 mb-4">Your order details were formatted and opened in WhatsApp chat for AURA manager to prepare immediately.</p>
+            <h3 class="font-display font-black text-xl text-slate-900">Order Sent to YUM WOK!</h3>
+            <p class="text-xs text-slate-600 mt-1 mb-4">Your order details were formatted and opened in WhatsApp chat for the YUM WOK kitchen manager to confirm immediately.</p>
             
-            <div class="bg-[#f5ede0] rounded-2xl p-3 text-left text-xs mb-4 border border-[#e5d7c3] font-mono space-y-1 text-slate-800" id="receiptPreviewBox">
+            <div class="bg-slate-50 rounded-2xl p-3.5 text-left text-xs mb-4 border border-slate-200 font-mono space-y-1 text-slate-800" id="receiptPreviewBox">
                 <!-- Preview summary -->
             </div>
 
-            <button onclick="closeSuccessModal()" class="w-full bg-[#043224] hover:bg-[#02241a] text-white text-xs font-black py-3 rounded-xl shadow-md">
+            <button onclick="closeSuccessModal()" class="w-full bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black py-3 rounded-xl shadow-md">
                 Done & Continue Browsing
             </button>
         </div>
     </div>
 
     <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-[#043224] text-white text-xs font-black px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 transform -translate-y-16 opacity-0 transition-all duration-300 pointer-events-none border border-[#02241a]">
-        <i class="fa-solid fa-circle-check text-white"></i>
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-black px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 transform -translate-y-16 opacity-0 transition-all duration-300 pointer-events-none border border-slate-700">
+        <i class="fa-solid fa-circle-check text-[#2E9578]"></i>
         <span id="toastMsg">Added to basket!</span>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
-        // --- 1. PRODUCT DATABASE FOR AURA HOUSE OF THINKERS ---
+        // --- 1. PRODUCT DATABASE FOR YUM WOK (PAN ASIAN) ---
+        const RESTAURANT_CONFIG = {
+            name: "YUM WOK",
+            subtitle: "PAN ASIAN",
+            tagline: "PAN ASIAN",
+            services: "HOME DELIVERY & TAKE AWAY",
+            address: "NASEMAN E IQBAL FOOD COURT, NEAR MAIN SOCIETY OFFICE, LAHORE",
+            phonePrimary: "0321-1003737",
+            phoneSecondary: "0316-9263696",
+            waPrimary: "923211003737",
+            waSecondary: "923169263696"
+        };
+
         const MENU_DATA = {
             categories: [
-                { id: 'all', name: 'All Menu', badge: 'Full Menu' },
-                { id: 'burgers', name: 'Burgers', badge: 'Patty & Theory' },
-                { id: 'wraps', name: 'Wraps', badge: 'Wrapped Logic' },
-                { id: 'aura_signature', name: 'Aura Signature', badge: 'Specialty Tacos' },
-                { id: 'bite_theory', name: 'Bite Theory', badge: 'Fries & Loaded' },
-                { id: 'aura_specials', name: 'Aura Specials', badge: 'Glaze Honey' },
-                { id: 'pasta_paradox', name: 'Pasta Paradox', badge: 'Alfredo & Thesis' },
-                { id: 'sandwiches', name: 'Sandwiches', badge: 'Grill & Insight' },
-                { id: 'sweet_tooth', name: 'Sweet Tooth', badge: 'Fudge Brownie' },
-                { id: 'add_ons', name: 'Add Ons', badge: 'Dips & Cheese' },
-                { id: 'thought_bar', name: 'Thought Bar', badge: 'Drinks & Teas' }
+                { id: 'all', name: 'All Menu', badge: 'Pan Asian' },
+                { id: 'soup', name: 'Soup', badge: 'Hot & Steamy' },
+                { id: 'appetizers', name: 'Appetizers', badge: 'Crispy Tempura & Wings' },
+                { id: 'noodles', name: 'Noodles', badge: 'Wok Chowmein' },
+                { id: 'rice', name: 'Rice', badge: 'Fried & Masala' },
+                { id: 'main_course', name: 'Main Course', badge: 'Served with Rice/Chowmein' }
             ],
             
             items: [
-                // === BURGERS ===
+                // ==================== SOUP ====================
                 {
-                    id: 'zing_manifesto',
-                    category: 'burgers',
-                    name: 'Zing Manifesto',
-                    desc: 'Signature crispy zinger patty, house special sauce, fresh lettuce & melted cheese.',
-                    price: 700,
-                    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80',
+                    id: 'hot_sour_soup',
+                    category: 'soup',
+                    name: 'Hot & Sour Soup',
+                    desc: 'Traditional spicy and tangy Asian soup loaded with chicken shreds, egg blossoms & mushrooms.',
+                    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80',
                     isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'grilled_theory',
-                    category: 'burgers',
-                    name: 'Grilled Theory Burger',
-                    desc: 'Flame-grilled juicy chicken patty infused with secret spices and herb mayo.',
-                    price: 750,
-                    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'patty_philosophy',
-                    category: 'burgers',
-                    name: 'Patty Philosophy',
-                    desc: 'Classic smashed chicken patty burger with fresh veg and flavorful dressing.',
-                    price: 460,
-                    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-
-                // === WRAPS ===
-                {
-                    id: 'extreme_wrapped_logic',
-                    category: 'wraps',
-                    name: 'Extreme Wrapped Logic',
-                    desc: 'Loaded crispy chicken wrap with rich sauces, jalapenos, and melted cheese.',
-                    price: 860,
-                    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'crunch_code_wrap',
-                    category: 'wraps',
-                    name: 'Crunch Code Wrap',
-                    desc: 'Crunchy chicken strips wrapped in a soft tortilla with spicy garlic mayo.',
-                    price: 750,
-                    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-
-                // === AURA SIGNATURE ===
-                {
-                    id: 'visionary_tacos',
-                    category: 'aura_signature',
-                    name: 'Visionary Mexican Tacos',
-                    desc: 'Authentic Mexican style tacos packed with seasoned chicken, salsa & special cream.',
-                    price: 870,
-                    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-
-                // === BITE THEORY (FRIES & SIDES) ===
-                {
-                    id: 'solo_fries',
-                    category: 'bite_theory',
-                    name: 'Solo Fries',
-                    desc: 'Crispy golden salted french fries portion.',
-                    price: 370,
-                    image: 'https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-                {
-                    id: 'masala_rush_fries',
-                    category: 'bite_theory',
-                    name: 'Masala Rush Fries',
-                    desc: 'Golden fries tossed in spicy special chaat masala blend.',
-                    price: 400,
-                    image: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-                {
-                    id: 'mayo_glow_fries',
-                    category: 'bite_theory',
-                    name: 'Mayo Glow Fries',
-                    desc: 'Crispy fries smothered in rich creamy garlic mayo sauce.',
-                    price: 450,
-                    image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'cheese_theory_fries',
-                    category: 'bite_theory',
-                    name: 'Cheese Theory Fries',
-                    desc: 'Loaded fries topped with melted liquid cheese and herbs.',
-                    price: 800,
-                    image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'crunch_loaded_fries',
-                    category: 'bite_theory',
-                    name: 'Crunch Loaded Fries',
-                    desc: 'Crispy fries loaded with chopped chicken crunch, jalapeños & signature sauces.',
-                    price: 650,
-                    image: 'https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'hot_shot_theory',
-                    category: 'bite_theory',
-                    name: 'Hot Shot Theory (6 Pcs)',
-                    desc: 'Bite-sized crispy chicken hot shots served with dip sauce.',
-                    price: 370,
-                    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-                {
-                    id: 'aura_strips',
-                    category: 'bite_theory',
-                    name: 'Aura Strips (4 Pcs)',
-                    desc: '4 pieces of golden fried tender chicken strips.',
-                    price: 750,
-                    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'fries_overload',
-                    category: 'bite_theory',
-                    name: 'Fries Overload',
-                    desc: 'Ultimate fries basket overloaded with toppings, cheese & chicken bits.',
-                    price: 650,
-                    image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-
-                // === AURA SPECIALS ===
-                {
-                    id: 'glaze_theory',
-                    category: 'aura_specials',
-                    name: 'Glaze Theory (Honey) 4 Pcs',
-                    desc: '4 pieces of crispy fried chicken glazed with sweet & spicy honey sauce.',
-                    price: 850,
-                    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-
-                // === PASTA PARADOX ===
-                {
-                    id: 'alfredo_fettuccine',
-                    category: 'pasta_paradox',
-                    name: 'Alfredo Fettuccine Dream',
-                    desc: 'Rich creamy Alfredo pasta with fettuccine, grilled chicken & parmesan cheese.',
-                    price: 700,
-                    image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'cheesy_chicken_thesis',
-                    category: 'pasta_paradox',
-                    name: 'Cheesy Chicken Thesis',
-                    desc: 'Baked pasta loaded with grilled chicken, mozzarella cheese & herbs.',
-                    price: 850,
-                    image: 'https://images.unsplash.com/photo-1555949258-eb67b28080b1?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-
-                // === SANDWICHES ===
-                {
-                    id: 'melted_sandwiche',
-                    category: 'sandwiches',
-                    name: 'Melted Sandwiche',
-                    desc: 'Multi-layer toasted sandwich stuffed with melted cheese & tender chicken.',
-                    price: 850,
-                    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'grilled_insight',
-                    category: 'sandwiches',
-                    name: 'The Grilled Insight',
-                    desc: 'Perfectly grilled club sandwich with smoked chicken, egg & cheese.',
-                    price: 770,
-                    image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'club_argument',
-                    category: 'sandwiches',
-                    name: 'The Club Argument',
-                    desc: 'Classic 3-layer club sandwich served with crispy fries.',
-                    price: 490,
-                    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-
-                // === SWEET TOOTH ===
-                {
-                    id: 'fudge_brownie',
-                    category: 'sweet_tooth',
-                    name: 'Fudge Brownie',
-                    desc: 'Warm, gooey chocolate fudge brownie with rich cocoa finish.',
-                    price: 390,
-                    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-
-                // === ADD ONS ===
-                {
-                    id: 'dip_sauce',
-                    category: 'add_ons',
-                    name: 'Dip Sauce',
-                    desc: 'Signature garlic mayo, spicy dip, honey mustard or cheese dip cup.',
-                    price: 100,
-                    image: 'https://images.unsplash.com/photo-1472476443507-c7a5948772fc?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'variant',
+                    type: 'size_variant',
                     variants: [
-                        { name: 'Garlic Mayo Dip', price: 100 },
-                        { name: 'Spicy Chili Dip', price: 100 },
-                        { name: 'Honey Mustard Dip', price: 100 },
-                        { name: 'Cheese Dip Cup', price: 100 }
+                        { name: 'Single Portion', price: 280, label: 'Single' },
+                        { name: 'Full Bowl', price: 700, label: 'Full' }
                     ]
                 },
                 {
-                    id: 'jalapenos_addon',
-                    category: 'add_ons',
-                    name: 'Jalapeños Extra',
-                    desc: 'Extra portion of sliced jalapeno peppers.',
-                    price: 60,
-                    image: 'https://images.unsplash.com/photo-1597362925123-77861d3fbac7?auto=format&fit=crop&w=400&q=80',
+                    id: 'chicken_corn_soup',
+                    category: 'soup',
+                    name: 'Chicken Corn Soup',
+                    desc: 'Classic comforting soup with sweet corn kernels, tender shredded chicken & egg drops.',
+                    image: 'https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 280, label: 'Single' },
+                        { name: 'Full Bowl', price: 700, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'szechuan_soup',
+                    category: 'soup',
+                    name: 'Szechuan Soup',
+                    desc: 'Fiery and bold Szechuan broth infused with oriental chili oil, chicken, and fresh Asian herbs.',
+                    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=400&q=80',
                     isPopular: false,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 350, label: 'Single' },
+                        { name: 'Full Bowl', price: 800, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'thai_clear_soup',
+                    category: 'soup',
+                    name: 'Thai Clear Soup',
+                    desc: 'Aromatic light Thai clear soup flavored with lemongrass, galangal, fresh herbs & chicken.',
+                    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 250, label: 'Single' },
+                        { name: 'Full Bowl', price: 650, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'wok_special_soup',
+                    category: 'soup',
+                    name: 'WOK Special Soup',
+                    desc: 'Chef’s signature rich Pan-Asian soup packed with chicken, prawns, black mushrooms & exotic spices.',
+                    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 350, label: 'Single' },
+                        { name: 'Full Bowl', price: 800, label: 'Full' }
+                    ]
+                },
+
+                // ==================== APPETIZERS ====================
+                {
+                    id: 'chicken_tempura',
+                    category: 'appetizers',
+                    name: 'Chicken Tempura',
+                    desc: 'Golden crispy Japanese style battered chicken strips served with special dipping sauce.',
+                    price: 650,
+                    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
                     type: 'fixed'
                 },
                 {
-                    id: 'cheese_slice_addon',
-                    category: 'add_ons',
-                    name: 'Cheese Slice Extra',
-                    desc: 'Extra melted cheddar cheese slice.',
-                    price: 100,
-                    image: 'https://images.unsplash.com/photo-1552767059-ce182ead8c1b?auto=format&fit=crop&w=400&q=80',
+                    id: 'honey_glazed_wings',
+                    category: 'appetizers',
+                    name: 'Honey Glazed Wings (5pcs)',
+                    desc: '5 pieces of succulent fried wings coated in sweet, spicy, and sticky honey chili glaze.',
+                    price: 650,
+                    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'fixed'
+                },
+                {
+                    id: 'tempura_prawns',
+                    category: 'appetizers',
+                    name: 'Tempura Prawns (5pcs)',
+                    desc: '5 pieces of jumbo prawns deep fried to light golden perfection in airy tempura batter.',
+                    price: 1000,
+                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'fixed'
+                },
+                {
+                    id: 'chicken_momos',
+                    category: 'appetizers',
+                    name: 'Chicken Momos (6pcs)',
+                    desc: '6 pieces of authentic steamed Asian dumplings stuffed with seasoned minced chicken & herbs.',
+                    price: 400,
+                    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'fixed'
+                },
+                {
+                    id: 'chicken_drum_stick',
+                    category: 'appetizers',
+                    name: 'Chicken Drum Stick',
+                    desc: 'Crispy fried marinated chicken drumsticks seasoned with oriental spice mix.',
+                    image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=400&q=80',
                     isPopular: false,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Drumstick', price: 450, label: 'Single' },
+                        { name: 'Full Portion', price: 850, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'dynamite_prawns',
+                    category: 'appetizers',
+                    name: 'Dynamite Prawns',
+                    desc: 'Crispy fried succulent prawns tossed in fiery and creamy signature dynamite sauce.',
+                    price: 950,
+                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
                     type: 'fixed'
                 },
 
-                // === THOUGHT BAR (BEVERAGES & TEA) ===
+                // ==================== NOODLES ====================
                 {
-                    id: 'rose_margarita',
-                    category: 'thought_bar',
-                    name: 'Rose Margarita',
-                    desc: 'Refreshing icy drink infused with rose syrup and lemon lime.',
-                    price: 400,
-                    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80',
+                    id: 'chicken_chowmein',
+                    category: 'noodles',
+                    name: 'Chicken Chowmein',
+                    desc: 'Wok-tossed noodles with shredded chicken, crunchy cabbage, carrots & savory soy garlic sauce.',
+                    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80',
                     isPopular: true,
-                    type: 'fixed'
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 500, label: 'Single' },
+                        { name: 'Full Portion', price: 900, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'mint_margarita',
-                    category: 'thought_bar',
-                    name: 'Mint Margarita',
-                    desc: 'Blended ice mint margarita with fresh lemon juice.',
-                    price: 400,
-                    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80',
+                    id: 'vegetable_chowmein',
+                    category: 'noodles',
+                    name: 'Vegetable Chowmein',
+                    desc: 'Stir-fried wok noodles loaded with garden-fresh bell peppers, cabbage, carrots and spring onions.',
+                    image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 500, label: 'Single' },
+                        { name: 'Full Portion', price: 800, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'wok_special_chowmein',
+                    category: 'noodles',
+                    name: 'Wok Special Chowmein',
+                    desc: 'Chef’s premium wok noodles stir-fried with chicken, beef strips, prawns, mushrooms & special sauce.',
+                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
                     isPopular: true,
-                    type: 'fixed'
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 700, label: 'Single' },
+                        { name: 'Full Portion', price: 1000, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'mint_lemonade',
-                    category: 'thought_bar',
-                    name: 'Mint Lemonade',
-                    desc: 'Chilled mint lemonade beverage.',
-                    price: 300,
-                    image: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-                {
-                    id: 'fresh_lime',
-                    category: 'thought_bar',
-                    name: 'Fresh Lime',
-                    desc: 'Classic fresh lime soda water.',
-                    price: 300,
-                    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
-                },
-                {
-                    id: 'karak_tea',
-                    category: 'thought_bar',
-                    name: 'Karak Tea',
-                    desc: 'Strong, aromatic traditional Karak Chai.',
-                    price: 250,
-                    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80',
+                    id: 'stir_fried_chicken_chilli_noodles',
+                    category: 'noodles',
+                    name: 'Stir Fried Chicken Chilli Noodles',
+                    desc: 'Spicy noodles stir-fried in hot wok with chicken shreds, red chili flakes, and scallions.',
+                    image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80',
                     isPopular: true,
-                    type: 'fixed'
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 600, label: 'Single' },
+                        { name: 'Full Portion', price: 900, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'cardamom_tea',
-                    category: 'thought_bar',
-                    name: 'Cardamom Tea',
-                    desc: 'Fragrant cardamom (Elaichi) infused hot tea.',
-                    price: 280,
-                    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
+                    id: 'stir_fried_beef_chilli_noodles',
+                    category: 'noodles',
+                    name: 'Stir Fried Beef Chilli Noodles',
+                    desc: 'Tender beef strips wok tossed with spicy noodles, green chilies, onions and rich dark sauce.',
+                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 650, label: 'Single' },
+                        { name: 'Full Portion', price: 950, label: 'Full' }
+                    ]
+                },
+
+                // ==================== RICE ====================
+                {
+                    id: 'egg_fried_rice',
+                    category: 'rice',
+                    name: 'Egg Fried Rice',
+                    desc: 'Classic Asian fragrant long-grain rice stir-fried in wok with scrambled eggs and spring onions.',
+                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 350, label: 'Single' },
+                        { name: 'Full Portion', price: 650, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'green_tea',
-                    category: 'thought_bar',
-                    name: 'Green Tea',
-                    desc: 'Healthy hot green tea brew.',
-                    price: 250,
-                    image: 'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=400&q=80',
+                    id: 'vegetable_fried_rice',
+                    category: 'rice',
+                    name: 'Vegetable Fried Rice',
+                    desc: 'Light and aromatic wok-fried rice tossed with finely diced fresh vegetables.',
+                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
                     isPopular: false,
-                    type: 'fixed'
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 300, label: 'Single' },
+                        { name: 'Full Portion', price: 500, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'soft_drink_350ml',
-                    category: 'thought_bar',
-                    name: 'Soft Drinks 350ml',
-                    desc: 'Chilled 350ml carbonated soft drink.',
-                    price: 150,
-                    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'fixed'
+                    id: 'chicken_fried_rice',
+                    category: 'rice',
+                    name: 'Chicken Fried Rice',
+                    desc: 'Fluffy wok rice tossed with tender seasoned chicken chunks, eggs, carrots and soy seasoning.',
+                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 400, label: 'Single' },
+                        { name: 'Full Portion', price: 700, label: 'Full' }
+                    ]
                 },
                 {
-                    id: 'water_bottle_500ml',
-                    category: 'thought_bar',
-                    name: 'Water Bottle 500ml',
-                    desc: '500ml mineral water bottle.',
-                    price: 100,
-                    image: 'https://images.unsplash.com/photo-1560023907-5f339617ea30?auto=format&fit=crop&w=400&q=80',
+                    id: 'masala_rice',
+                    category: 'rice',
+                    name: 'Masala Rice',
+                    desc: 'Spicy fusion oriental rice infused with aromatic masala seasoning and wok char.',
+                    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80',
                     isPopular: false,
-                    type: 'fixed'
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 400, label: 'Single' },
+                        { name: 'Full Portion', price: 700, label: 'Full' }
+                    ]
+                },
+                {
+                    id: 'wok_special_rice',
+                    category: 'rice',
+                    name: 'Wok Special Rice',
+                    desc: 'Signature master wok rice stir-fried with chicken, beef, prawns, mushrooms and secret spice blend.',
+                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: 'Single Portion', price: 450, label: 'Single' },
+                        { name: 'Full Portion', price: 750, label: 'Full' }
+                    ]
+                },
+
+                // ==================== MAIN COURSE ====================
+                // All single entries served with option of Egg Fried Rice, Vegetable Fried Rice, or Vegetable Chowmein
+                {
+                    id: 'kung_pao',
+                    category: 'main_course',
+                    name: 'Kung Pao',
+                    desc: 'Famous Szechuan stir-fry with peanuts, dried red chilies, bell peppers & sweet spicy glaze.',
+                    image: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'szechuan',
+                    category: 'main_course',
+                    name: 'Szechuan',
+                    desc: 'Spicy wok gravy cooked in pungent Szechuan chili sauce, garlic, ginger, and scallions.',
+                    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'chilli_dry',
+                    category: 'main_course',
+                    name: 'Chilli Dry',
+                    desc: 'Crispy sliced meat stir-fried dry with green chilies, ginger julienne, onions and savory seasoning.',
+                    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'black_pepper',
+                    category: 'main_course',
+                    name: 'Black Pepper',
+                    desc: 'Aromatic crushed black pepper sauce wok-tossed with onions, capsicum and savory dark soy.',
+                    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'mongolian',
+                    category: 'main_course',
+                    name: 'Mongolian',
+                    desc: 'Caramelized rich brown sauce with sliced meat, abundant scallions and a subtle sweetness.',
+                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'manchurian',
+                    category: 'main_course',
+                    name: 'Manchurian',
+                    desc: 'All-time favorite red tangy gravy with hints of garlic, ginger, and fresh green chilies.',
+                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
+                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'sweet_sour',
+                    category: 'main_course',
+                    name: 'Sweet & Sour',
+                    desc: 'Crispy meat chunks smothered in vibrant sweet and sour sauce with pineapple and peppers.',
+                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 950, hasSide: true },
+                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1300, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'hot_garlic',
+                    category: 'main_course',
+                    name: 'Hot Garlic',
+                    desc: 'Robust roasted garlic sauce infused with red chili paste, scallions and Asian seasonings.',
+                    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'cashew_nut',
+                    category: 'main_course',
+                    name: 'Cashew Nut',
+                    desc: 'Stir-fried chicken with roasted crunchy cashew nuts, mushrooms, onions and light oyster glaze.',
+                    image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'oyster_sauce',
+                    category: 'main_course',
+                    name: 'Oyster Sauce',
+                    desc: 'Savory classic Cantonese stir-fry with rich oyster sauce, black mushrooms and crisp vegetables.',
+                    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80',
+                    isPopular: false,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'bankok_chilli',
+                    category: 'main_course',
+                    name: 'Bankok Chilli',
+                    desc: 'Thai-style spicy chili stir-fry with fresh basil aroma, lemongrass hints and fiery bird’s eye chili.',
+                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
+                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false },
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false },
+                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
+                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
+                    ]
+                },
+                {
+                    id: 'crispy_sesame_beef',
+                    category: 'main_course',
+                    name: 'Crispy Sesame Beef',
+                    desc: 'Shredded beef or seafood crispy fried, tossed in caramelized sweet chili glaze & toasted sesame.',
+                    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80',
+                    isPopular: true,
+                    type: 'main_course_variant',
+                    variants: [
+                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
+                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false },
+                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
+                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
+                    ]
                 }
             ]
         };
@@ -950,19 +1218,17 @@
         let currentCategory = 'all';
         let searchQuery = '';
         let cart = [];
+        let serviceType = 'Home Delivery'; // or 'Take Away'
         
         // Modal state
         let activeModalItem = null;
-        let selectedSize = null;
-        let selectedFlavor = null;
-        let selectedVariant = null;
+        let selectedVariantIndex = 0;
+        let selectedComplimentarySide = 'Egg Fried Rice';
         let modalQty = 1;
-
-        // Business configuration for AURA House of Thinkers
-        const WHATSAPP_NUMBER = "923330654609";
 
         // --- 3. INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
+            initShopStatus();
             renderCategories();
             initNavAutoScroll();
             renderProducts();
@@ -984,8 +1250,8 @@
                     onclick="selectCategory('${cat.id}')"
                     class="category-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 ${
                         currentCategory === cat.id 
-                            ? 'active bg-[#043224] text-[#fefcf7] border-[#043224] shadow-md' 
-                            : 'bg-[#f5ebd8] text-slate-800 border-[#dfcfb5] hover:border-[#043224]'
+                            ? 'active bg-[#2E9578] text-white border-[#1b5c4a] shadow-md' 
+                            : 'bg-slate-100 text-slate-800 border-slate-200 hover:border-[#2E9578]'
                     }"
                 >
                     <span>${cat.name}</span>
@@ -1029,8 +1295,8 @@
             renderCategories();
             
             const categoryObj = MENU_DATA.categories.find(c => c.id === catId);
-            document.getElementById('currentSectionTitle').textContent = categoryObj ? categoryObj.name : 'Menu';
-            document.getElementById('currentSectionBadge').textContent = categoryObj ? categoryObj.badge : 'All Items';
+            document.getElementById('currentSectionTitle').textContent = categoryObj ? categoryObj.name : 'Pan Asian Menu';
+            document.getElementById('currentSectionBadge').textContent = categoryObj ? categoryObj.badge : 'All Dishes';
             
             isNavUserInteracting = true;
             clearTimeout(navUserPauseTimeout);
@@ -1059,7 +1325,8 @@
                 filtered = filtered.filter(item => {
                     const matchName = item.name.toLowerCase().includes(query);
                     const matchDesc = item.desc.toLowerCase().includes(query);
-                    return matchName || matchDesc;
+                    const matchCategory = item.category.toLowerCase().includes(query);
+                    return matchName || matchDesc || matchCategory;
                 });
             }
 
@@ -1071,53 +1338,75 @@
 
             emptyState.classList.add('hidden');
 
-            container.innerHTML = filtered.map(item => `
-                <div class="glass-card-light rounded-2xl p-3 shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-3">
-                    <!-- Image -->
-                    <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-slate-100 border border-[#e5d7c3]">
-                        <img 
-                            src="${item.image}" 
-                            alt="${item.name}" 
-                            class="w-full h-full object-cover" 
-                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=80'"
-                        >
-                        ${item.isPopular ? `
-                            <span class="absolute top-1 left-1 bg-[#043224] text-[#fefcf7] text-[9px] font-black uppercase px-1.5 py-0.5 rounded shadow-sm">
-                                POPULAR
-                            </span>
-                        ` : ''}
-                    </div>
+            container.innerHTML = filtered.map(item => {
+                // Calculate starting price or range
+                let priceDisplay = '';
+                let sideBadge = '';
 
-                    <!-- Details -->
-                    <div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
-                        <div>
-                            <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base leading-snug line-clamp-1">
-                                ${item.name}
-                            </h3>
-                            <p class="text-[11px] text-slate-500 line-clamp-2 mt-0.5">
-                                ${item.desc}
-                            </p>
+                if (item.type === 'fixed') {
+                    priceDisplay = `PKR ${item.price.toLocaleString()}/-`;
+                } else if (item.variants && item.variants.length > 0) {
+                    const minPrice = Math.min(...item.variants.map(v => v.price));
+                    priceDisplay = `From PKR ${minPrice.toLocaleString()}/-`;
+                }
+
+                if (item.category === 'main_course') {
+                    sideBadge = `
+                        <span class="text-[9px] font-extrabold text-[#1b5c4a] bg-[#edf8f5] border border-[#a8dcce] px-1.5 py-0.5 rounded flex items-center gap-1 mt-1">
+                            <i class="fa-solid fa-bowl-rice text-[8px]"></i> Includes Rice/Chowmein (Single)
+                        </span>
+                    `;
+                }
+
+                return `
+                    <div class="glass-card-light rounded-2xl p-3 shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-3 border border-slate-200">
+                        <!-- Image -->
+                        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-slate-900 border border-slate-200">
+                            <img 
+                                src="${item.image}" 
+                                alt="${item.name}" 
+                                class="w-full h-full object-cover" 
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=300&q=80'"
+                            >
+                            ${item.isPopular ? `
+                                <span class="absolute top-1 left-1 bg-[#2E9578] text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded shadow-sm">
+                                    POPULAR
+                                </span>
+                            ` : ''}
                         </div>
 
-                        <div class="mt-2.5 flex items-center justify-between">
+                        <!-- Details -->
+                        <div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
                             <div>
-                                <span class="text-[10px] text-slate-400 font-semibold block uppercase">Price</span>
-                                <span class="text-sm sm:text-base font-black text-[#043224] font-display">
-                                    ${item.type === 'variant' ? 'From ' : ''}PKR ${item.price.toLocaleString()}/-
-                                </span>
+                                <h3 class="font-display font-bold text-slate-900 text-sm sm:text-base leading-snug line-clamp-1">
+                                    ${item.name}
+                                </h3>
+                                <p class="text-[11px] text-slate-500 line-clamp-2 mt-0.5">
+                                    ${item.desc}
+                                </p>
+                                ${sideBadge}
                             </div>
 
-                            <button 
-                                onclick="openItemModalById('${item.id}')"
-                                class="bg-[#043224] hover:bg-[#02241a] text-[#fefcf7] text-xs font-black px-3 py-1.5 rounded-xl shadow-sm active:scale-95 transition flex items-center gap-1"
-                            >
-                                <i class="fa-solid fa-plus text-[10px]"></i>
-                                <span>Add</span>
-                            </button>
+                            <div class="mt-2 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 font-semibold block uppercase">Price</span>
+                                    <span class="text-sm sm:text-base font-black text-[#2E9578] font-display">
+                                        ${priceDisplay}
+                                    </span>
+                                </div>
+
+                                <button 
+                                    onclick="openItemModalById('${item.id}')"
+                                    class="bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-3.5 py-1.5 rounded-xl shadow-sm active:scale-95 transition flex items-center gap-1"
+                                >
+                                    <i class="fa-solid fa-plus text-[10px]"></i>
+                                    <span>Add</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // --- 6. SEARCH HANDLER ---
@@ -1145,6 +1434,8 @@
             if (!item) return;
 
             activeModalItem = item;
+            selectedVariantIndex = 0;
+            selectedComplimentarySide = 'Egg Fried Rice';
             modalQty = 1;
             document.getElementById('modalQtyDisplay').textContent = modalQty;
 
@@ -1157,38 +1448,92 @@
             const container = document.getElementById('modalOptionsContainer');
             container.innerHTML = '';
 
-            if (item.type === 'variant') {
-                selectedVariant = item.variants[0];
-
-                let html = `
+            // Handle Variant Types
+            if (item.type === 'size_variant' || item.type === 'main_course_variant') {
+                let variantsHtml = `
                     <div>
-                        <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">Select Flavor / Option:</h4>
-                        <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                            <span>Select Portion / Protein:</span>
+                            <span class="text-[10px] text-[#2E9578] font-extrabold">${item.variants.length} Options</span>
+                        </h4>
+                        <div class="grid grid-cols-1 gap-2">
                             ${item.variants.map((v, idx) => `
                                 <button 
-                                    onclick="selectModalVariant(${idx})" 
+                                    onclick="selectModalVariantIndex(${idx})" 
                                     id="modalVariantBtn_${idx}"
-                                    class="variant-option-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between ${
+                                    class="variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between ${
                                         idx === 0 
-                                            ? 'border-[#043224] bg-[#eef6f2] text-[#043224]' 
-                                            : 'border-[#e5d7c3] bg-[#fefcf7] text-slate-800 hover:border-[#043224]'
+                                            ? 'border-[#2E9578] bg-[#edf8f5] text-[#2E9578] shadow-sm' 
+                                            : 'border-slate-200 bg-white text-slate-800 hover:border-[#2E9578]'
                                     }"
                                 >
-                                    <span>${v.name}</span>
-                                    <span class="font-black text-[#043224] text-sm">PKR ${v.price}/-</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-4 h-4 rounded-full border flex items-center justify-center ${idx === 0 ? 'border-[#2E9578] bg-[#2E9578] text-white' : 'border-slate-300'}">
+                                            ${idx === 0 ? '<i class="fa-solid fa-check text-[8px]"></i>' : ''}
+                                        </span>
+                                        <span>${v.name}</span>
+                                    </div>
+                                    <span class="font-black text-[#2E9578] text-sm">PKR ${v.price.toLocaleString()}/-</span>
                                 </button>
                             `).join('')}
                         </div>
                     </div>
                 `;
-                container.innerHTML = html;
+
+                // If Main Course, add complimentary side selection container
+                if (item.category === 'main_course') {
+                    const currentVariant = item.variants[0];
+                    const isSingle = currentVariant && currentVariant.hasSide;
+
+                    variantsHtml += `
+                        <div id="complimentarySideSection" class="${isSingle ? '' : 'hidden'} mt-3 bg-[#edf8f5] border border-[#a8dcce] rounded-2xl p-3.5 space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <h5 class="text-xs font-black text-[#1b5c4a] flex items-center gap-1.5">
+                                    <i class="fa-solid fa-bowl-rice text-[#2E9578]"></i> Select Free Complimentary Side:
+                                </h5>
+                                <span class="bg-[#2E9578] text-white font-black text-[9px] uppercase px-1.5 py-0.5 rounded">
+                                    Free Included
+                                </span>
+                            </div>
+                            <p class="text-[11px] text-emerald-800 font-medium">All single main entries are served with your choice of 1 complimentary side:</p>
+                            
+                            <div class="grid grid-cols-1 gap-1.5">
+                                <label onclick="selectSideOption('Egg Fried Rice')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-[#2E9578] bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
+                                    <span class="flex items-center gap-2">
+                                        <input type="radio" name="sideChoice" value="Egg Fried Rice" checked class="text-[#2E9578] focus:ring-[#2E9578]">
+                                        <span>🥢 Egg Fried Rice</span>
+                                    </span>
+                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
+                                </label>
+
+                                <label onclick="selectSideOption('Vegetable Fried Rice')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
+                                    <span class="flex items-center gap-2">
+                                        <input type="radio" name="sideChoice" value="Vegetable Fried Rice" class="text-[#2E9578] focus:ring-[#2E9578]">
+                                        <span>🥢 Vegetable Fried Rice</span>
+                                    </span>
+                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
+                                </label>
+
+                                <label onclick="selectSideOption('Vegetable Chowmein')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
+                                    <span class="flex items-center gap-2">
+                                        <input type="radio" name="sideChoice" value="Vegetable Chowmein" class="text-[#2E9578] focus:ring-[#2E9578]">
+                                        <span>🥢 Vegetable Chowmein</span>
+                                    </span>
+                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = variantsHtml;
 
             } else {
                 // Fixed item
                 container.innerHTML = `
-                    <div class="bg-[#f5ede0] border border-[#e5d7c3] rounded-xl p-3 text-xs text-slate-600">
-                        <span class="font-bold text-slate-900 block mb-1">Standard Portion</span>
-                        Freshly prepared at AURA House of Thinkers and delivered hot to your doorstep!
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-600">
+                        <span class="font-bold text-slate-900 block mb-1">Standard Full Portion</span>
+                        Freshly prepared in traditional oriental wok with authentic ingredients and hot spices!
                     </div>
                 `;
             }
@@ -1212,19 +1557,49 @@
             }, 300);
         }
 
-        function selectModalVariant(index) {
+        function selectModalVariantIndex(index) {
             if (!activeModalItem || !activeModalItem.variants) return;
-            selectedVariant = activeModalItem.variants[index];
+            selectedVariantIndex = index;
 
-            document.querySelectorAll('.variant-option-btn').forEach((btn, i) => {
+            document.querySelectorAll('.variant-btn').forEach((btn, i) => {
                 if (i === index) {
-                    btn.className = 'variant-option-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-[#043224] bg-[#eef6f2] text-[#043224]';
+                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-[#2E9578] bg-[#edf8f5] text-[#2E9578] shadow-sm';
+                    const iconSpan = btn.querySelector('span:first-child');
+                    if (iconSpan) iconSpan.innerHTML = '<i class="fa-solid fa-check text-[8px]"></i>';
                 } else {
-                    btn.className = 'variant-option-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-[#e5d7c3] bg-[#fefcf7] text-slate-800 hover:border-[#043224]';
+                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-slate-200 bg-white text-slate-800 hover:border-[#2E9578]';
+                    const iconSpan = btn.querySelector('span:first-child');
+                    if (iconSpan) iconSpan.innerHTML = '';
                 }
             });
 
+            // Toggle complimentary side section if main course
+            const sideSection = document.getElementById('complimentarySideSection');
+            if (sideSection && activeModalItem.category === 'main_course') {
+                const variant = activeModalItem.variants[index];
+                if (variant && variant.hasSide) {
+                    sideSection.classList.remove('hidden');
+                } else {
+                    sideSection.classList.add('hidden');
+                }
+            }
+
             updateModalPriceDisplay();
+        }
+
+        function selectSideOption(sideName) {
+            selectedComplimentarySide = sideName;
+            document.querySelectorAll('.side-choice-card').forEach(card => {
+                const radio = card.querySelector('input[type="radio"]');
+                if (radio && radio.value === sideName) {
+                    radio.checked = true;
+                    card.classList.add('border-[#2E9578]', 'bg-[#edf8f5]/60');
+                    card.classList.remove('border-slate-200');
+                } else {
+                    card.classList.remove('border-[#2E9578]', 'bg-[#edf8f5]/60');
+                    card.classList.add('border-slate-200');
+                }
+            });
         }
 
         function changeModalQty(delta) {
@@ -1235,8 +1610,8 @@
 
         function calculateModalItemUnitPrice() {
             if (!activeModalItem) return 0;
-            if (activeModalItem.type === 'variant' && selectedVariant) {
-                return selectedVariant.price;
+            if (activeModalItem.variants && activeModalItem.variants.length > 0) {
+                return activeModalItem.variants[selectedVariantIndex].price;
             } else {
                 return activeModalItem.price;
             }
@@ -1255,13 +1630,17 @@
             let optionsText = '';
             let price = activeModalItem.price;
 
-            if (activeModalItem.type === 'variant' && selectedVariant) {
-                price = selectedVariant.price;
-                titleName = selectedVariant.name;
-                optionsText = '';
+            if (activeModalItem.variants && activeModalItem.variants.length > 0) {
+                const v = activeModalItem.variants[selectedVariantIndex];
+                price = v.price;
+                titleName = `${activeModalItem.name} - ${v.name}`;
+
+                if (activeModalItem.category === 'main_course' && v.hasSide) {
+                    optionsText = `Side: ${selectedComplimentarySide}`;
+                }
             }
 
-            const cartItemId = `${activeModalItem.id}_${selectedVariant ? selectedVariant.name : ''}`;
+            const cartItemId = `${activeModalItem.id}_${selectedVariantIndex}_${optionsText}`;
 
             const existingIndex = cart.findIndex(c => c.cartItemId === cartItemId);
             if (existingIndex > -1) {
@@ -1283,16 +1662,37 @@
             showToast(`Added ${modalQty}x ${titleName} to basket!`);
         }
 
-        // --- 8. CART & STORAGE LOGIC ---
+        // --- 8. SERVICE TYPE TOGGLE (HOME DELIVERY / TAKE AWAY) ---
+        function selectServiceType(type) {
+            serviceType = type;
+            const btnDelivery = document.getElementById('serviceBtnDelivery');
+            const btnTakeAway = document.getElementById('serviceBtnTakeAway');
+            const addressContainer = document.getElementById('addressFieldContainer');
+            const billServiceModeText = document.getElementById('billServiceModeText');
+
+            if (type === 'Home Delivery') {
+                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition';
+                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition';
+                addressContainer.classList.remove('hidden');
+                billServiceModeText.textContent = 'Home Delivery';
+            } else {
+                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition';
+                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition';
+                addressContainer.classList.add('hidden');
+                billServiceModeText.textContent = 'Take Away';
+            }
+        }
+
+        // --- 9. CART & STORAGE LOGIC ---
         function saveCartToStorage() {
             try {
-                localStorage.setItem('aura_thinkers_cart', JSON.stringify(cart));
+                localStorage.setItem('yum_wok_cart', JSON.stringify(cart));
             } catch (e) {}
         }
 
         function loadCartFromStorage() {
             try {
-                const saved = localStorage.getItem('aura_thinkers_cart');
+                const saved = localStorage.getItem('yum_wok_cart');
                 if (saved) {
                     cart = JSON.parse(saved);
                 }
@@ -1318,7 +1718,7 @@
             }
 
             // Update Drawer items list
-            document.getElementById('drawerItemCountText').textContent = `${totalQty} item${totalQty !== 1 ? 's' : ''} selected`;
+            document.getElementById('drawerItemCountText').textContent = `${totalQty} dish${totalQty !== 1 ? 'es' : ''} selected`;
             
             const cartItemsList = document.getElementById('cartItemsList');
             const emptyCartView = document.getElementById('emptyCartView');
@@ -1333,22 +1733,22 @@
                 checkoutSection.classList.remove('hidden');
 
                 cartItemsList.innerHTML = cart.map((item, index) => `
-                    <div class="bg-[#f5ede0] rounded-xl p-3 border border-[#e5d7c3] flex items-center justify-between gap-2 text-xs">
+                    <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 flex items-center justify-between gap-2 text-xs">
                         <div class="flex-1 min-w-0">
                             <h5 class="font-bold text-slate-900 truncate">${item.name}</h5>
-                            ${item.optionsText ? `<p class="text-[10px] text-[#043224] font-medium">${item.optionsText}</p>` : ''}
-                            <div class="text-xs font-black text-slate-900 mt-0.5">
+                            ${item.optionsText ? `<p class="text-[10px] text-[#2E9578] font-extrabold">${item.optionsText}</p>` : ''}
+                            <div class="text-xs font-black text-[#2E9578] mt-0.5">
                                 PKR ${(item.unitPrice * item.qty).toLocaleString()}/-
                             </div>
                         </div>
 
                         <!-- Quantity control -->
-                        <div class="flex items-center bg-[#fefcf7] rounded-lg border border-[#dfcfb5] p-0.5 shadow-sm shrink-0">
-                            <button onclick="updateCartItemQty(${index}, -1)" class="w-6 h-6 rounded bg-[#f3ead8] text-slate-800 flex items-center justify-center text-[10px] font-bold">
+                        <div class="flex items-center bg-white rounded-xl border border-slate-200 p-0.5 shadow-sm shrink-0">
+                            <button onclick="updateCartItemQty(${index}, -1)" class="w-6 h-6 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-[10px] font-bold">
                                 <i class="fa-solid fa-minus"></i>
                             </button>
-                            <span class="w-6 text-center font-bold text-xs text-[#043224]">${item.qty}</span>
-                            <button onclick="updateCartItemQty(${index}, 1)" class="w-6 h-6 rounded bg-[#043224] text-white flex items-center justify-center text-[10px] font-bold">
+                            <span class="w-6 text-center font-bold text-xs text-[#2E9578]">${item.qty}</span>
+                            <button onclick="updateCartItemQty(${index}, 1)" class="w-6 h-6 rounded-lg bg-[#2E9578] text-white flex items-center justify-center text-[10px] font-bold">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
@@ -1389,7 +1789,22 @@
             }, 300);
         }
 
-        // --- 9. PAYMENT METHOD LOGIC ---
+        function togglePhoneModal() {
+            const modal = document.getElementById('phoneModal');
+            const card = document.getElementById('phoneModalCard');
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('pointer-events-none', 'opacity-0');
+                card.classList.remove('scale-95');
+            } else {
+                card.classList.add('scale-95');
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('pointer-events-none');
+                }, 300);
+            }
+        }
+
+        // --- 10. PAYMENT METHOD LOGIC ---
         function handlePaymentChange(val) {
             const card = document.getElementById('onlinePaymentCard');
             if (val !== 'Cash on Delivery') {
@@ -1404,70 +1819,92 @@
                 const btn = document.getElementById(btnId);
                 const orig = btn.innerHTML;
                 btn.innerHTML = `<i class="fa-solid fa-check"></i><span>Copied!</span>`;
-                btn.classList.replace('bg-[#043224]', 'bg-[#02241a]');
+                btn.classList.replace('bg-[#2E9578]', 'bg-[#1b5c4a]');
                 setTimeout(() => {
                     btn.innerHTML = orig;
-                    btn.classList.replace('bg-[#02241a]', 'bg-[#043224]');
+                    btn.classList.replace('bg-[#1b5c4a]', 'bg-[#2E9578]');
                 }, 2000);
             });
         }
 
-        // --- 10. WHATSAPP ORDER SUBMISSION ---
+        // --- 11. WHATSAPP ORDER SUBMISSION ---
         function submitOrderToWhatsApp() {
             if (cart.length === 0) {
                 showToast("Your basket is empty!");
                 return;
             }
 
+            const custName = document.getElementById('custName').value.trim();
+            const custPhone = document.getElementById('custPhone').value.trim();
             const address = document.getElementById('custAddress').value.trim();
             const notes = document.getElementById('custNotes').value.trim();
             const payment = document.getElementById('custPayment').value;
 
-            if (!address) {
-                showToast("Please enter delivery address!");
+            if (!custName) {
+                showToast("Please enter your name!");
+                document.getElementById('custName').focus();
+                return;
+            }
+
+            if (!custPhone) {
+                showToast("Please enter your phone number!");
+                document.getElementById('custPhone').focus();
+                return;
+            }
+
+            if (serviceType === 'Home Delivery' && !address) {
+                showToast("Please enter your delivery address!");
                 document.getElementById('custAddress').focus();
                 return;
             }
 
             const totalPrice = cart.reduce((acc, item) => acc + (item.unitPrice * item.qty), 0);
 
-            // Construct clean WhatsApp text
-            let message = `*NEW ORDER - AURA*\n`;
+            // Construct clean formatted WhatsApp text
+            let message = `*NEW ORDER - YUM WOK (PAN ASIAN)*\n`;
+            message += `_Taste The Orient • Lahore_\n`;
             message += `----------------------------\n`;
-            message += `*ORDER ITEMS:*\n`;
+            message += `*ORDER TYPE:* ${serviceType.toUpperCase()}\n`;
+            message += `*CUSTOMER:* ${custName} (${custPhone})\n`;
+            if (serviceType === 'Home Delivery') {
+                message += `*DELIVERY ADDRESS:*\n${address}\n`;
+            }
+            message += `----------------------------\n`;
+            message += `*ORDER DISHES:*\n`;
 
             cart.forEach((item, i) => {
                 message += `${i+1}. *${item.name}* x ${item.qty}\n`;
                 if (item.optionsText) {
-                    message += `   _(${item.optionsText})_\n`;
+                    message += `   _${item.optionsText}_\n`;
                 }
                 message += `   Price: PKR ${(item.unitPrice * item.qty).toLocaleString()}/-\n`;
             });
 
             message += `----------------------------\n`;
-            message += `*TOTAL BILL:* PKR ${totalPrice.toLocaleString()}/-\n`;
+            message += `*ESTIMATED TOTAL:* PKR ${totalPrice.toLocaleString()}/-\n`;
             message += `----------------------------\n`;
-            message += `*DELIVERY ADDRESS:*\n${address}\n\n`;
 
             if (notes) {
-                message += `*INSTRUCTIONS:* ${notes}\n`;
+                message += `*KITCHEN INSTRUCTIONS:* ${notes}\n`;
             }
 
             message += `*PAYMENT METHOD:* ${payment}\n`;
             message += `----------------------------\n`;
-            message += `_Sent via AURA Digital Menu_`;
+            message += `_Sent via YUM WOK Digital Pan Asian Menu_`;
 
             // Open WhatsApp link
             const encodedMsg = encodeURIComponent(message);
-            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+            const waUrl = `https://wa.me/${RESTAURANT_CONFIG.waPrimary}?text=${encodedMsg}`;
             window.open(waUrl, '_blank');
 
             // Show Receipt Preview Modal
             document.getElementById('receiptPreviewBox').innerHTML = `
-                <div><strong>Delivery Address:</strong> ${address}</div>
+                <div><strong>Service:</strong> ${serviceType}</div>
+                <div><strong>Customer:</strong> ${custName} (${custPhone})</div>
+                ${serviceType === 'Home Delivery' ? `<div><strong>Address:</strong> ${address}</div>` : ''}
                 <div><strong>Payment:</strong> ${payment}</div>
-                <div><strong>Total Items:</strong> ${cart.length}</div>
-                <div class="text-[#043224] font-bold"><strong>Total Bill:</strong> PKR ${totalPrice.toLocaleString()}/-</div>
+                <div><strong>Total Items:</strong> ${cart.length} dish(es)</div>
+                <div class="text-[#2E9578] font-bold"><strong>Total Bill:</strong> PKR ${totalPrice.toLocaleString()}/-</div>
             `;
 
             closeCartDrawer();
@@ -1496,7 +1933,7 @@
             }, 300);
         }
 
-        // --- 11. TOAST NOTIFICATION ---
+        // --- 12. TOAST NOTIFICATION ---
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toastMsg').textContent = msg;
@@ -1504,6 +1941,82 @@
             setTimeout(() => {
                 toast.classList.add('-translate-y-16', 'opacity-0');
             }, 2500);
+        }
+
+        // --- 13. LIVE SHOP OPEN / CLOSED STATUS LOGIC (GREEN / RED LIGHT) ---
+        let isShopOpen = true;
+
+        function checkAutomatedShopHours() {
+            // Standard Asian restaurant hours: 12:00 PM (12) to 01:00 AM (0)
+            const now = new Date();
+            const hours = now.getHours();
+            return (hours >= 12 || hours === 0);
+        }
+
+        function initShopStatus() {
+            const saved = localStorage.getItem('yumwok_shop_open_status');
+            if (saved !== null) {
+                isShopOpen = (saved === 'true');
+            } else {
+                isShopOpen = checkAutomatedShopHours();
+            }
+            updateShopStatusUI();
+            
+            // Recheck every minute if automatic
+            setInterval(() => {
+                if (localStorage.getItem('yumwok_shop_open_status') === null) {
+                    isShopOpen = checkAutomatedShopHours();
+                    updateShopStatusUI();
+                }
+            }, 60000);
+        }
+
+        function toggleShopStatus() {
+            isShopOpen = !isShopOpen;
+            localStorage.setItem('yumwok_shop_open_status', isShopOpen.toString());
+            updateShopStatusUI();
+            
+            if (isShopOpen) {
+                showToast("🟢 Shop is OPEN: Green light active, accepting orders!");
+            } else {
+                showToast("🔴 Shop is CLOSED: Red light active.");
+            }
+        }
+
+        function updateShopStatusUI() {
+            const badge = document.getElementById('shopStatusBadge');
+            const light = document.getElementById('shopStatusLight');
+            const text = document.getElementById('shopStatusText');
+            const hoursNotice = document.getElementById('shopHoursNotice');
+            const hoursDot = document.getElementById('shopHoursDot');
+
+            if (!badge || !light || !text) return;
+
+            if (isShopOpen) {
+                // Green Light - Open
+                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-sm active:scale-95';
+                light.className = 'w-2.5 h-2.5 rounded-full status-light-green inline-block shrink-0';
+                text.textContent = 'OPEN';
+                badge.setAttribute('title', 'Shop is OPEN (Green light) • Click to toggle');
+                
+                if (hoursDot) hoursDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block';
+                if (hoursNotice) {
+                    hoursNotice.textContent = 'Open Now (12:00 PM – 01:00 AM)';
+                    hoursNotice.className = 'text-emerald-700 font-bold';
+                }
+            } else {
+                // Red Light - Closed
+                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-red-50 text-red-700 border-red-300 hover:bg-red-100 shadow-sm active:scale-95';
+                light.className = 'w-2.5 h-2.5 rounded-full status-light-red inline-block shrink-0';
+                text.textContent = 'CLOSED';
+                badge.setAttribute('title', 'Shop is CLOSED (Red light) • Click to toggle');
+                
+                if (hoursDot) hoursDot.className = 'w-1.5 h-1.5 rounded-full bg-red-500 inline-block';
+                if (hoursNotice) {
+                    hoursNotice.textContent = 'Closed Now (Opens 12:00 PM)';
+                    hoursNotice.className = 'text-red-600 font-bold';
+                }
+            }
         }
     </script>
 </body>
