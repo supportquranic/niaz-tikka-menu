@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>YUM WOK | Pan Asian • Lahore</title>
-    <meta name="description" content="YUM WOK Pan Asian Restaurant. Authentic Soups, Appetizers, Chowmein, Fried Rice, Kung Pao, Chilli Dry & Seafood in Lahore. Home Delivery & Take Away!">
+    <title>NIAZ TIKKA | Live BBQ & Tandoor • Lahore</title>
+    <meta name="description" content="NIAZ TIKKA - Live BBQ, Seekh Kababs, Malai Boti, Chargha, Fresh Naan & Tandoor in Lahore. Free Delivery & Take Away!">
     
     <!-- Google Fonts (Outfit & Plus Jakarta Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,24 +22,18 @@
                 extend: {
                     colors: {
                         primary: '#ffffff',
-                        secondary: {
-                            DEFAULT: '#2E9578',
-                            hover: '#247861',
-                            dark: '#1b5c4a',
-                            light: '#edf8f5',
-                            border: '#a8dcce'
-                        },
-                        wok: {
-                            teal: '#2E9578',
-                            tealHover: '#247861',
-                            tealDark: '#1b5c4a',
-                            tealLight: '#edf8f5',
-                            tealBorder: '#a8dcce',
-                            amber: '#f59e0b',
-                            dark: '#0f172a',
-                            bg: '#f8fafc',
-                            cardBg: '#ffffff',
-                            border: '#e2e8f0'
+                        bbq: {
+                            red: '#DC2626',
+                            redHover: '#B91C1C',
+                            redDark: '#991B1B',
+                            redLight: '#FEF2F2',
+                            redBorder: '#FECACA',
+                            black: '#0F172A',
+                            darkCard: '#18181B',
+                            charcoal: '#27272A',
+                            bg: '#F8FAFC',
+                            cardBg: '#FFFFFF',
+                            border: '#E2E8F0'
                         }
                     },
                     fontFamily: {
@@ -48,8 +42,8 @@
                     },
                     boxShadow: {
                         'soft': '0 4px 20px rgba(0, 0, 0, 0.04)',
-                        'card': '0 4px 15px rgba(46, 149, 120, 0.08)',
-                        'floating': '0 10px 30px rgba(46, 149, 120, 0.35)',
+                        'card': '0 4px 15px rgba(220, 38, 38, 0.08)',
+                        'floating': '0 10px 30px rgba(220, 38, 38, 0.35)',
                         'modal': '0 25px 60px -15px rgba(15, 23, 42, 0.25)'
                     }
                 }
@@ -87,7 +81,7 @@
             background-color: #ffffff;
             min-height: 100vh;
             position: relative;
-            box-shadow: 0 0 50px rgba(46, 149, 120, 0.06);
+            box-shadow: 0 0 50px rgba(220, 38, 38, 0.08);
             display: flex;
             flex-direction: column;
             border-left: 1px solid #e2e8f0;
@@ -108,12 +102,12 @@
             scrollbar-width: none;
         }
 
-        /* Active Category Pill Animation & Gradient using #2E9578 */
+        /* Active Category Pill Animation & Gradient */
         .category-pill.active {
-            background: linear-gradient(135deg, #2E9578 0%, #1b5c4a 100%);
+            background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
             color: #ffffff !important;
-            box-shadow: 0 6px 18px rgba(46, 149, 120, 0.35);
-            border-color: #1b5c4a;
+            box-shadow: 0 6px 18px rgba(220, 38, 38, 0.35);
+            border-color: #991B1B;
             font-weight: 800;
         }
 
@@ -122,15 +116,15 @@
         }
 
         .glass-header {
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
         }
 
         .glass-card-dark {
-            background: linear-gradient(135deg, #2E9578 0%, #175242 100%) !important;
+            background: linear-gradient(135deg, #18181B 0%, #09090B 100%) !important;
             backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(46, 149, 120, 0.35) !important;
+            border: 1px solid rgba(220, 38, 38, 0.35) !important;
         }
 
         .glass-card-light {
@@ -154,7 +148,7 @@
             border-radius: 4px;
         }
 
-        /* Live Shop Status Pulse Lights */
+        /* Live Shop Status Pulse Lights (4pm-2am Green, 2am-4pm Red) */
         @keyframes pulse-green {
             0% {
                 transform: scale(0.95);
@@ -196,7 +190,7 @@
         }
     </style>
 </head>
-<body class="selection:bg-[#2E9578] selection:text-white">
+<body class="selection:bg-red-600 selection:text-white">
 
     <div class="app-wrapper pb-32">
         
@@ -206,49 +200,49 @@
             <div class="px-4 pt-2.5 pb-2 flex items-center justify-between gap-2">
                 <div>
                     <div class="flex items-center gap-2">
+                        <!-- Business Name: Simple clean ALL CAPS, no vector logo -->
                         <h1 class="font-display font-black text-2xl sm:text-3xl text-slate-900 leading-none tracking-tight">
-                            YUM <span class="text-[#2E9578]">WOK</span>
+                            NIAZ <span class="text-[#DC2626]">TIKKA</span>
                         </h1>
-                        <!-- Live Status Light Indicator (Green = Open, Red = Closed) -->
-                        <button 
+                        <!-- Live Status Light Indicator (Green = 4pm-2am, Red = 2am-4pm) -->
+                        <div 
                             id="shopStatusBadge" 
-                            onclick="toggleShopStatus()" 
-                            title="Click to toggle or check Open/Closed status" 
-                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-sm active:scale-95"
+                            title="Live Shop Status (04:00 PM – 02:00 AM)" 
+                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm"
                         >
                             <span id="shopStatusLight" class="w-2.5 h-2.5 rounded-full status-light-green inline-block shrink-0"></span>
                             <span id="shopStatusText" class="tracking-wide">OPEN</span>
-                        </button>
+                        </div>
                     </div>
                     <p class="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1.5">
-                        <span class="text-[#2E9578] font-black tracking-wide uppercase">PAN ASIAN</span>
+                        <span class="text-[#DC2626] font-black tracking-wide uppercase">LIVE BBQ &amp; TANDOOR</span>
                         <span>•</span>
-                        <span class="text-slate-600 truncate max-w-[170px] sm:max-w-none">Naseman e Iqbal, Lahore</span>
+                        <span class="text-slate-600 truncate max-w-[170px] sm:max-w-none">Nasheman-e-Iqbal Phase 1, Lahore</span>
                     </p>
                 </div>
 
                 <!-- Quick Action Buttons: Phone Modal & WhatsApp -->
                 <div class="flex items-center gap-2 shrink-0">
                     <!-- Phone Contacts Trigger -->
-                    <button onclick="togglePhoneModal()" title="Call YUM WOK" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 flex items-center justify-center text-sm shadow-sm active:scale-95 transition">
-                        <i class="fa-solid fa-phone text-[#2E9578]"></i>
+                    <button onclick="togglePhoneModal()" title="Call NIAZ TIKKA" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 flex items-center justify-center text-sm shadow-sm active:scale-95 transition">
+                        <i class="fa-solid fa-phone text-[#DC2626]"></i>
                     </button>
                     <!-- WhatsApp Direct Order -->
-                    <a href="https://wa.me/923211003737" target="_blank" title="WhatsApp Order: 0321-1003737" class="w-9 h-9 rounded-full bg-[#2E9578] hover:bg-[#247861] text-white flex items-center justify-center text-base shadow-md shadow-[#2E9578]/30 active:scale-95 transition">
+                    <a href="https://wa.me/923049891530" target="_blank" title="WhatsApp Order: 0304-9891530" class="w-9 h-9 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white flex items-center justify-center text-base shadow-md shadow-red-600/30 active:scale-95 transition">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Service Modes Notice & Operating Timing Info -->
-            <div class="px-4 pb-2 flex items-center justify-between text-[11px] font-bold text-slate-600 border-t border-slate-100 pt-1.5">
-                <div class="flex items-center gap-1.5 text-[#2E9578] font-extrabold">
+            <div class="px-4 pb-2 flex items-center justify-between text-[11px] font-bold text-slate-600 border-t border-slate-100 pt-1.5 flex-wrap gap-y-1">
+                <div class="flex items-center gap-1.5 text-[#DC2626] font-extrabold text-[10px] sm:text-[11px]">
                     <i class="fa-solid fa-motorcycle"></i>
-                    <span>HOME DELIVERY &amp; TAKE AWAY</span>
+                    <span>FREE Delivery in Area • 1000g per KG Guaranteed!</span>
                 </div>
                 <div class="flex items-center gap-1 text-slate-500 text-[10px]" id="shopHoursNoticeContainer">
                     <span id="shopHoursDot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
-                    <span id="shopHoursNotice">12:00 PM – 01:00 AM</span>
+                    <span id="shopHoursNotice">04:00 PM – 02:00 AM</span>
                 </div>
             </div>
 
@@ -259,8 +253,8 @@
                     <input 
                         type="text" 
                         id="searchInput" 
-                        placeholder="Search menu (e.g. Chowmein, Kung Pao, Soup, Rice, Prawns)..." 
-                        class="w-full bg-slate-50 text-slate-900 text-xs font-medium placeholder-slate-400 pl-9 pr-8 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#2E9578] focus:ring-2 focus:ring-[#2E9578]/20 transition shadow-inner"
+                        placeholder="Search menu (e.g. Malai Boti, Seekh Kabab, Chargha, Roghni Naan, Drinks)..." 
+                        class="w-full bg-slate-50 text-slate-900 text-xs font-medium placeholder-slate-400 pl-9 pr-8 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-[#DC2626] focus:ring-2 focus:ring-[#DC2626]/20 transition shadow-inner"
                         oninput="handleSearch(this.value)"
                     >
                     <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 text-slate-400 hover:text-slate-700">
@@ -277,38 +271,37 @@
 
         <!-- HERO HIGHLIGHT CAROUSEL / FEATURED SPECIAL -->
         <div class="px-4 py-3" id="heroBanner">
-            <div class="glass-card-dark rounded-2xl p-4 text-white relative overflow-hidden shadow-lg flex items-center justify-between">
+            <div class="glass-card-dark rounded-2xl p-4 text-white relative overflow-hidden shadow-xl flex items-center justify-between border border-red-600/30">
                 <div class="relative z-10 max-w-[62%]">
-                    <span class="bg-white text-[#1b5c4a] font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
-                        CHEF RECOMMENDED
+                    <span class="bg-[#DC2626] text-white font-black text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
+                        SPECIAL PLATTER
                     </span>
                     <h3 class="font-display text-base font-black leading-tight text-white drop-shadow-sm">
-                        Kung Pao Wok Classic
+                        BBQ Mix Platter
                     </h3>
-                    <p class="text-[11px] text-emerald-100 font-medium mt-0.5 mb-2.5 line-clamp-2">
-                        Authentic Szechuan chili glaze, peanuts, bell peppers with choice of Rice or Chowmein!
+                    <p class="text-[11px] text-zinc-300 font-medium mt-0.5 mb-2.5 line-clamp-2">
+                        Malai Boti, Green Boti, Cheese Boti, Chicken Kabab, Cheese Kabab, Beef &amp; Gola Kabab!
                     </p>
-                    <button onclick="openItemModalById('kung_pao')" class="bg-white hover:bg-emerald-50 text-[#1b5c4a] font-black text-xs px-3.5 py-1.5 rounded-xl shadow-md active:scale-95 transition flex items-center gap-1.5">
-                        Order Single • PKR 700/- <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    <button onclick="openItemModalById('bbq_mix_platter')" class="bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-xs px-3.5 py-1.5 rounded-xl shadow-md active:scale-95 transition flex items-center gap-1.5 border border-red-500">
+                        Order Platter • From PKR 2,800/- <i class="fa-solid fa-arrow-right text-[10px]"></i>
                     </button>
                 </div>
                 <div class="relative z-10 shrink-0 w-28 h-28 -mr-2">
                     <img 
-                        src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=300&q=80" 
-                        alt="Kung Pao Chicken"
-                        class="w-full h-full object-cover rounded-2xl shadow-2xl rotate-2 border-2 border-emerald-200/50" 
-                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=300&q=80'"
+                        src="images/bbq_mix_platter.jpg" 
+                        alt="BBQ Mix Platter"
+                        class="w-full h-full object-cover rounded-2xl shadow-2xl rotate-2 border-2 border-red-500/50"
                     >
                 </div>
             </div>
         </div>
 
-        <!-- SPECIAL NOTE CALLOUT FOR MAIN COURSES -->
+        <!-- SPECIAL PROMISE CALLOUT -->
         <div class="px-4 pb-2">
-            <div class="bg-[#edf8f5] border border-[#a8dcce] rounded-xl p-2.5 flex items-start gap-2 text-xs text-[#1b5c4a] shadow-sm">
-                <i class="fa-solid fa-bowl-rice text-[#2E9578] text-sm mt-0.5 shrink-0"></i>
+            <div class="bg-[#FEF2F2] border border-[#FECACA] rounded-xl p-2.5 flex items-start gap-2 text-xs text-[#991B1B] shadow-sm">
+                <i class="fa-solid fa-scale-balanced text-[#DC2626] text-sm mt-0.5 shrink-0"></i>
                 <div class="text-[11px] leading-tight">
-                    <strong class="font-extrabold text-[#0f3d30]">Special Main Course Offer:</strong> All Single entries are served with your choice of <span class="font-bold underline">Egg Fried Rice</span>, <span class="font-bold underline">Vegetable Fried Rice</span>, or <span class="font-bold underline">Vegetable Chowmein</span>!
+                    <strong class="font-extrabold text-[#7F1D1D]">Quality &amp; Quantity Promise:</strong> کلو میں 1000 گرام پورا ہوگا (Full 1000g per KG guaranteed). Live catering available for weddings &amp; events!
                 </div>
             </div>
         </div>
@@ -318,8 +311,8 @@
             <h2 class="text-sm font-black text-slate-900 font-display flex items-center gap-2" id="currentSectionTitle">
                 All Menu Items
             </h2>
-            <span id="currentSectionBadge" class="text-[11px] font-bold text-[#2E9578] bg-[#edf8f5] border border-[#a8dcce] px-2.5 py-0.5 rounded-full">
-                Full Pan Asian Menu
+            <span id="currentSectionBadge" class="text-[11px] font-bold text-[#DC2626] bg-[#FEF2F2] border border-[#FECACA] px-2.5 py-0.5 rounded-full">
+                Fresh BBQ &amp; Tandoor
             </span>
         </div>
 
@@ -334,76 +327,94 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <h3 class="font-bold text-slate-900 text-base">No dishes found</h3>
-            <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">We couldn't find any dishes matching your search. Try searching for "Chowmein", "Kung Pao", "Momos", "Soup", or "Chilli Dry".</p>
-            <button onclick="clearSearch()" class="mt-4 bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-4 py-2 rounded-xl shadow-sm">
+            <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">We couldn't find any items matching your search. Try searching for "Malai Boti", "Seekh Kabab", "Chargha", "Naan", or "Cola".</p>
+            <button onclick="clearSearch()" class="mt-4 bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-black px-4 py-2 rounded-xl shadow-sm">
                 Show Full Menu
             </button>
         </div>
 
         <!-- STORE INFO BANNER / STATS & FOOTER -->
         <div class="px-4 pt-6 pb-28" id="storeInfoBanner">
-            <div class="glass-card-dark rounded-3xl p-5 text-white shadow-xl relative overflow-hidden">
-                <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="glass-card-dark rounded-3xl p-5 text-white shadow-xl relative overflow-hidden border border-red-600/30">
+                <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-red-600/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="relative z-10 space-y-4">
                     <!-- Name & Subtitle -->
-                    <div class="flex items-start justify-between gap-2 border-b border-white/20 pb-3">
+                    <div class="flex items-start justify-between gap-2 border-b border-zinc-800 pb-3">
                         <div>
                             <div class="flex items-center gap-2">
-                                <h3 class="font-display font-black text-2xl tracking-tight text-white">YUM WOK</h3>
-                                <span class="bg-white text-[#1b5c4a] text-[10px] font-black px-2 py-0.5 rounded uppercase">Pan Asian</span>
+                                <h3 class="font-display font-black text-2xl tracking-tight text-white">NIAZ TIKKA</h3>
+                                <span class="bg-[#DC2626] text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">LIVE BBQ</span>
                             </div>
-                            <p class="text-xs text-emerald-100 font-bold tracking-wider mt-0.5 uppercase">PAN ASIAN</p>
+                            <p class="text-xs text-zinc-400 font-bold tracking-wider mt-0.5 uppercase">LIVE TANDOOR &amp; BBQ SPECIALIST</p>
                         </div>
-                        <span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full shrink-0 border border-white/30">
-                            Delivery &amp; Take Away
+                        <span class="bg-zinc-800/80 backdrop-blur-sm text-zinc-200 text-[10px] font-bold px-2.5 py-1 rounded-full shrink-0 border border-zinc-700">
+                            FREE Delivery
                         </span>
                     </div>
 
                     <!-- Address & Location -->
-                    <div class="space-y-1.5 text-xs text-emerald-50">
+                    <div class="space-y-1.5 text-xs text-zinc-300">
                         <div class="flex items-start gap-2">
-                            <i class="fa-solid fa-location-dot text-white mt-0.5 shrink-0"></i>
+                            <i class="fa-solid fa-location-dot text-[#DC2626] mt-0.5 shrink-0"></i>
                             <div>
                                 <strong class="text-white block font-bold">Address:</strong>
-                                <span>NASEMAN E IQBAL FOOD COURT, NEAR MAIN SOCIETY OFFICE, LAHORE</span>
+                                <span>13/14 PLOT COMMERCIAL NASHEMAN E IQBAL PHASE 1, LAHORE</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-clock text-[#DC2626] mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-white block font-bold">Timings:</strong>
+                                <span>04:00 PM to 02:00 AM Daily</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-utensils text-[#DC2626] mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-white block font-bold">Event Catering:</strong>
+                                <span>Live BBQ, Live Tandoor, Halwa Puri &amp; Channay for weddings &amp; parties.</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Quality Promise Badges -->
-                    <div class="pt-2 border-t border-white/20">
-                        <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-100 block mb-2">Our Quality Promise:</span>
+                    <!-- Payment Methods Accepted Summary -->
+                    <div class="pt-2 border-t border-zinc-800">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block mb-2">Accepted Payment Modes:</span>
                         <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
-                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
-                                <i class="fa-solid fa-leaf text-emerald-200 text-sm mb-1"></i>
-                                <span class="text-white font-bold">Fresh</span>
-                                <span class="text-emerald-100 text-[9px]">Ingredients</span>
+                            <div class="bg-zinc-900/90 rounded-xl py-2 px-1 border border-zinc-800 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-money-bill-wave text-green-400 text-sm mb-1"></i>
+                                <span class="text-white font-bold">Cash</span>
+                                <span class="text-zinc-400 text-[9px]">On Delivery</span>
                             </div>
-                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
-                                <i class="fa-solid fa-utensils text-emerald-200 text-sm mb-1"></i>
-                                <span class="text-white font-bold">Authentic</span>
-                                <span class="text-emerald-100 text-[9px]">Flavors</span>
+                            <div class="bg-zinc-900/90 rounded-xl py-2 px-1 border border-zinc-800 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-mobile-screen-button text-emerald-400 text-sm mb-1"></i>
+                                <span class="text-white font-bold">Easypaisa</span>
+                                <span class="text-zinc-400 text-[9px]">03049891530</span>
                             </div>
-                            <div class="bg-white/15 backdrop-blur-sm rounded-xl py-2 px-1 border border-white/20 flex flex-col items-center justify-center">
-                                <i class="fa-solid fa-user-tie text-emerald-200 text-sm mb-1"></i>
-                                <span class="text-white font-bold">Expert</span>
-                                <span class="text-emerald-100 text-[9px]">Pan Chef</span>
-                            </div>
+                            <div class="bg-zinc-900/90 rounded-xl py-2 px-1 border border-zinc-800 flex flex-col items-center justify-center">
+                                <i class="fa-solid fa-bolt text-amber-400 text-sm mb-1"></i>
+                                <span class="text-white font-bold">JazzCash</span>
+                                <span class="text-zinc-400 text-[9px]">03096332778</span>
                         </div>
                     </div>
+
+                    <!-- Designer Credit -->
+                    <div class="pt-3 border-t border-zinc-800/80 text-center">
+                        <p class="text-[11px] text-zinc-400 font-medium">
+                            Designed by 
+                            <a 
+                                href="https://wa.me/923294355677" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                class="text-white hover:text-red-400 font-black inline-flex items-center gap-1.5 underline decoration-[#DC2626] decoration-2 underline-offset-4 transition group"
+                                title="Chat with Talha Muzammil on WhatsApp"
+                            >
+                                <i class="fa-brands fa-whatsapp text-emerald-400 text-sm group-hover:scale-110 transition-transform"></i>
+                                <span>Talha muzammil</span>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Under Footer: Clickable WhatsApp Attribution for Talha Muzammil -->
-            <div class="text-center mt-5">
-                <a href="https://wa.me/923294355677" target="_blank" class="inline-block group py-1 px-3 rounded-xl hover:bg-slate-100 transition">
-                    <span class="text-xs font-semibold text-slate-600 group-hover:text-[#2E9578] transition block">
-                        Designed by <strong class="text-slate-900 group-hover:text-[#2E9578] font-bold underline decoration-[#2E9578]/40">Talha Muzammil</strong>
-                    </span>
-                    <span class="text-[10px] text-slate-400 group-hover:text-[#2E9578] font-medium flex items-center justify-center gap-1 mt-0.5 transition">
-                        <i class="fa-brands fa-whatsapp text-xs text-[#2E9578]"></i> Click to contact
-                    </span>
-                </a>
             </div>
         </div>
 
@@ -412,21 +423,21 @@
             <div class="w-full max-w-[500px] pointer-events-auto">
                 <button 
                     onclick="openCartDrawer()" 
-                    class="w-full bg-gradient-to-r from-[#1b5c4a] via-[#2E9578] to-[#2E9578] text-white rounded-2xl p-3.5 shadow-floating flex items-center justify-between active:scale-[0.98] transition border border-[#a8dcce]/30"
+                    class="w-full bg-gradient-to-r from-[#991B1B] via-[#DC2626] to-[#DC2626] text-white rounded-2xl p-3.5 shadow-floating flex items-center justify-between active:scale-[0.98] transition border border-red-400/30"
                 >
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-white text-[#2E9578] flex items-center justify-center font-black text-sm relative shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-white text-[#DC2626] flex items-center justify-center font-black text-sm relative shadow-sm">
                             <i class="fa-solid fa-basket-shopping text-base"></i>
-                            <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-[#1b5c4a] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                            <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-[#991B1B] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                                 0
                             </span>
                         </div>
                         <div class="text-left">
-                            <span class="text-[10px] font-extrabold text-emerald-100 uppercase tracking-wider block">Your Pan Asian Basket</span>
+                            <span class="text-[10px] font-extrabold text-red-100 uppercase tracking-wider block">Your BBQ Basket</span>
                             <span class="text-base font-black tracking-tight text-white" id="floatingCartTotal">PKR 0/-</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 font-black text-xs bg-white text-[#2E9578] px-3.5 py-2 rounded-xl shadow-sm hover:bg-emerald-50 transition">
+                    <div class="flex items-center gap-2 font-black text-xs bg-white text-[#DC2626] px-3.5 py-2 rounded-xl shadow-sm hover:bg-red-50 transition">
                         <span>Checkout</span>
                         <i class="fa-solid fa-chevron-right text-[10px]"></i>
                     </div>
@@ -439,24 +450,24 @@
     <!-- PHONE CONTACTS MODAL -->
     <div id="phoneModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 p-4">
         <div class="w-full max-w-xs bg-white border border-slate-200 rounded-3xl p-5 text-center shadow-modal transform scale-95 transition-all duration-300" id="phoneModalCard">
-            <div class="w-12 h-12 bg-[#edf8f5] text-[#2E9578] rounded-2xl flex items-center justify-center text-xl mx-auto mb-3 border border-[#a8dcce]">
+            <div class="w-12 h-12 bg-[#FEF2F2] text-[#DC2626] rounded-2xl flex items-center justify-center text-xl mx-auto mb-3 border border-[#FECACA]">
                 <i class="fa-solid fa-headset"></i>
             </div>
-            <h3 class="font-display font-black text-lg text-slate-900">Contact YUM WOK</h3>
+            <h3 class="font-display font-black text-lg text-slate-900">Contact NIAZ TIKKA</h3>
             <p class="text-xs text-slate-500 mt-0.5 mb-4">Choose a number for direct phone call or WhatsApp order:</p>
             
             <div class="space-y-2.5 text-left mb-4">
                 <!-- Contact 1 -->
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 flex items-center justify-between">
                     <div>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Primary Hotline</span>
-                        <strong class="text-sm font-black text-slate-900">0321-1003737</strong>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase block">Primary Line &amp; WhatsApp</span>
+                        <strong class="text-sm font-black text-slate-900">0304-9891530</strong>
                     </div>
                     <div class="flex items-center gap-1.5">
-                        <a href="tel:03211003737" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                        <a href="tel:03049891530" class="w-8 h-8 rounded-xl bg-[#DC2626] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#B91C1C]">
                             <i class="fa-solid fa-phone"></i>
                         </a>
-                        <a href="https://wa.me/923211003737" target="_blank" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                        <a href="https://wa.me/923049891530" target="_blank" class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs shadow-sm hover:bg-emerald-700">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
@@ -466,13 +477,13 @@
                 <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 flex items-center justify-between">
                     <div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase block">Secondary Line</span>
-                        <strong class="text-sm font-black text-slate-900">0316-9263696</strong>
+                        <strong class="text-sm font-black text-slate-900">0302-1587253</strong>
                     </div>
                     <div class="flex items-center gap-1.5">
-                        <a href="tel:03169263696" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                        <a href="tel:03021587253" class="w-8 h-8 rounded-xl bg-[#DC2626] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#B91C1C]">
                             <i class="fa-solid fa-phone"></i>
                         </a>
-                        <a href="https://wa.me/923169263696" target="_blank" class="w-8 h-8 rounded-xl bg-[#2E9578] text-white flex items-center justify-center text-xs shadow-sm hover:bg-[#247861]">
+                        <a href="https://wa.me/923021587253" target="_blank" class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-xs shadow-sm hover:bg-emerald-700">
                             <i class="fa-brands fa-whatsapp"></i>
                         </a>
                     </div>
@@ -490,17 +501,17 @@
         <div class="w-full max-w-[500px] bg-white border border-slate-200 rounded-t-[32px] sm:rounded-3xl max-h-[90vh] flex flex-col shadow-modal transform translate-y-full transition-transform duration-300" id="itemModalCard">
             <!-- Modal Header with Image -->
             <div class="relative h-48 sm:h-52 w-full shrink-0 bg-slate-900 rounded-t-[32px] sm:rounded-t-3xl overflow-hidden">
-                <img id="modalItemImage" src="" alt="Asian Dish" class="w-full h-full object-cover opacity-90" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80'">
+                <img id="modalItemImage" src="" alt="BBQ Dish" class="w-full h-full object-cover opacity-90" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80'">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
                 <button onclick="closeItemModal()" class="absolute top-4 right-4 w-9 h-9 bg-white/90 hover:bg-white text-slate-800 rounded-full flex items-center justify-center backdrop-blur-md transition border border-slate-200 shadow-sm">
                     <i class="fa-solid fa-xmark text-base"></i>
                 </button>
                 <div class="absolute bottom-3 left-4 right-4 text-white">
-                    <span id="modalItemCategoryBadge" class="text-[10px] font-black uppercase bg-[#2E9578] text-white px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
+                    <span id="modalItemCategoryBadge" class="text-[10px] font-black uppercase bg-[#DC2626] text-white px-2 py-0.5 rounded-md inline-block mb-1 shadow-sm">
                         Category
                     </span>
                     <h3 id="modalItemTitle" class="font-display font-black text-xl leading-tight text-white drop-shadow-sm">Item Name</h3>
-                    <p id="modalItemDesc" class="text-xs text-emerald-100 line-clamp-2 mt-0.5">Item description goes here</p>
+                    <p id="modalItemDesc" class="text-xs text-red-100 line-clamp-2 mt-0.5">Item description goes here</p>
                 </div>
             </div>
 
@@ -516,15 +527,15 @@
                     <button onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 flex items-center justify-center text-xs font-bold active:scale-95 transition">
                         <i class="fa-solid fa-minus"></i>
                     </button>
-                    <span id="modalQtyDisplay" class="w-8 text-center font-black text-sm text-[#2E9578]">1</span>
-                    <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg bg-[#2E9578] text-white flex items-center justify-center text-xs font-black active:scale-95 transition">
+                    <span id="modalQtyDisplay" class="w-8 text-center font-black text-sm text-[#DC2626]">1</span>
+                    <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg bg-[#DC2626] text-white flex items-center justify-center text-xs font-black active:scale-95 transition">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
 
                 <!-- Add Button -->
-                <button id="modalAddToCartBtn" onclick="confirmAddToCart()" class="flex-1 bg-[#2E9578] hover:bg-[#247861] text-white font-black text-xs py-3.5 px-4 rounded-xl shadow-md flex items-center justify-between active:scale-[0.98] transition">
-                    <span>Add To Pan Asian Basket</span>
+                <button id="modalAddToCartBtn" onclick="confirmAddToCart()" class="flex-1 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-xs py-3.5 px-4 rounded-xl shadow-md flex items-center justify-between active:scale-[0.98] transition">
+                    <span>Add To BBQ Basket</span>
                     <span id="modalFinalPrice" class="bg-white/20 px-2.5 py-0.5 rounded-lg text-white font-extrabold">PKR 0/-</span>
                 </button>
             </div>
@@ -537,12 +548,12 @@
             <!-- Header -->
             <div class="px-4 py-3.5 border-b border-slate-200 flex items-center justify-between bg-slate-50 rounded-t-[32px] sm:rounded-t-3xl">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-full bg-[#edf8f5] border border-[#a8dcce] text-[#2E9578] flex items-center justify-center text-sm">
+                    <div class="w-8 h-8 rounded-full bg-[#FEF2F2] border border-[#FECACA] text-[#DC2626] flex items-center justify-center text-sm">
                         <i class="fa-solid fa-basket-shopping"></i>
                     </div>
                     <div>
-                        <h3 class="font-display font-black text-base text-slate-900">YUM WOK Order Basket</h3>
-                        <span id="drawerItemCountText" class="text-[11px] text-slate-500 font-semibold">0 dishes selected</span>
+                        <h3 class="font-display font-black text-base text-slate-900">NIAZ TIKKA Order Basket</h3>
+                        <span id="drawerItemCountText" class="text-[11px] text-slate-500 font-semibold">0 items selected</span>
                     </div>
                 </div>
                 <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
@@ -559,25 +570,25 @@
 
                 <!-- Empty Cart View -->
                 <div id="emptyCartView" class="hidden py-12 text-center">
-                    <div class="w-16 h-16 bg-[#edf8f5] text-[#2E9578] border border-[#a8dcce] rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
-                        <i class="fa-solid fa-bowl-rice"></i>
+                    <div class="w-16 h-16 bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] rounded-full flex items-center justify-center mx-auto text-2xl mb-3">
+                        <i class="fa-solid fa-fire-burner"></i>
                     </div>
                     <h4 class="font-bold text-slate-900 text-base">Your basket is empty</h4>
-                    <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Explore our Pan Asian delicacies and add delicious Soups, Chowmein, Kung Pao, Chilli Dry or Momos!</p>
-                    <button onclick="closeCartDrawer()" class="mt-4 bg-[#2E9578] text-white text-xs font-black px-5 py-2.5 rounded-xl shadow-md hover:bg-[#247861]">
-                        Browse Pan Asian Menu
+                    <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Explore our fresh BBQ menu and add Malai Boti, Seekh Kabab, Chargha, Fish, Naan or Drinks!</p>
+                    <button onclick="closeCartDrawer()" class="mt-4 bg-[#DC2626] text-white text-xs font-black px-5 py-2.5 rounded-xl shadow-md hover:bg-[#B91C1C]">
+                        Browse BBQ Menu
                     </button>
                 </div>
 
                 <!-- Checkout Form & Details -->
                 <div id="checkoutFormSection" class="pt-2 space-y-3.5 border-t border-slate-200">
-                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-[#2E9578] flex items-center gap-1.5">
-                        <i class="fa-solid fa-motorcycle text-[#2E9578]"></i> Order Service &amp; Address
+                    <h4 class="font-display font-bold text-xs uppercase tracking-wider text-[#DC2626] flex items-center gap-1.5">
+                        <i class="fa-solid fa-motorcycle text-[#DC2626]"></i> Order Service &amp; Address
                     </h4>
 
                     <!-- Service Type Selector (Delivery / Take Away) -->
                     <div class="grid grid-cols-2 gap-2 text-xs font-bold">
-                        <button type="button" onclick="selectServiceType('Home Delivery')" id="serviceBtnDelivery" class="p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition">
+                        <button type="button" onclick="selectServiceType('Home Delivery')" id="serviceBtnDelivery" class="p-2.5 rounded-xl border-2 border-[#DC2626] bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center gap-1.5 transition">
                             <i class="fa-solid fa-truck-ramp-box"></i>
                             <span>Home Delivery</span>
                         </button>
@@ -591,83 +602,101 @@
                     <div class="space-y-2.5 text-xs">
                         <div>
                             <label class="block text-slate-800 font-bold mb-1">
-                                Customer Name <span class="text-[#2E9578]">*</span>
+                                Customer Name <span class="text-[#DC2626]">*</span>
                             </label>
                             <input 
                                 type="text" 
                                 id="custName" 
                                 placeholder="Your Name" 
-                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#DC2626] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
                             >
                         </div>
 
                         <div>
                             <label class="block text-slate-800 font-bold mb-1">
-                                Phone Number <span class="text-[#2E9578]">*</span>
+                                Phone Number <span class="text-[#DC2626]">*</span>
                             </label>
                             <input 
                                 type="tel" 
                                 id="custPhone" 
-                                placeholder="e.g. 0321-XXXXXXX" 
-                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
+                                placeholder="e.g. 0304-XXXXXXX" 
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#DC2626] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
                             >
                         </div>
 
                         <div id="addressFieldContainer">
                             <label class="block text-slate-800 font-bold mb-1">
-                                Delivery Address / Landmark <span class="text-[#2E9578]">*</span>
+                                Delivery Address / Landmark <span class="text-[#DC2626]">*</span>
                             </label>
                             <textarea 
                                 id="custAddress" 
                                 rows="2" 
-                                placeholder="House / Flat #, Street, Phase / Area (e.g. Naseman e Iqbal, Wapda Town, Lahore)" 
-                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#2E9578] rounded-xl px-3 py-2.5 text-xs focus:outline-none placeholder-slate-400 shadow-inner"
+                                placeholder="House / Shop #, Street, Phase / Area (e.g. Nasheman-e-Iqbal Phase 1, Lahore)" 
+                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#DC2626] rounded-xl px-3 py-2.5 text-xs focus:outline-none placeholder-slate-400 shadow-inner"
                             ></textarea>
                         </div>
 
                         <!-- Special Instructions -->
                         <div>
                             <label class="block text-slate-700 font-semibold mb-1">Kitchen Instructions (Optional)</label>
-                            <input type="text" id="custNotes" placeholder="e.g. Extra spicy, extra cutlery, less chili" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#2E9578]">
+                            <input type="text" id="custNotes" placeholder="e.g. Extra spicy, extra mint raita, well-cooked" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#DC2626]">
                         </div>
 
                         <!-- Payment Method Selector -->
                         <div>
                             <label class="block text-slate-700 font-semibold mb-1">Select Payment Method</label>
-                            <select id="custPayment" onchange="handlePaymentChange(this.value)" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#2E9578] font-medium">
+                            <select id="custPayment" onchange="handlePaymentChange(this.value)" class="w-full bg-slate-50 text-slate-900 border border-slate-300 rounded-xl px-3 py-2.5 text-xs focus:outline-none focus:border-[#DC2626] font-medium">
                                 <option value="Cash on Delivery" selected>Cash on Delivery (COD)</option>
-                                <option value="EasyPaisa / JazzCash / Bank Transfer">Online Transfer / EasyPaisa / JazzCash</option>
+                                <option value="Easypaisa (03049891530)">Easypaisa (0304-9891530)</option>
+                                <option value="JazzCash (03096332778)">JazzCash (0309-6332778)</option>
                             </select>
                         </div>
 
                         <!-- PAYMENT ACCOUNTS DETAILS CARD WITH 1-CLICK COPY BUTTONS -->
-                        <div id="onlinePaymentCard" class="hidden bg-[#edf8f5] border border-[#a8dcce] rounded-2xl p-3.5 space-y-3 shadow-sm">
-                            <div class="flex items-center justify-between border-b border-[#a8dcce]/60 pb-2">
+                        <div id="onlinePaymentCard" class="hidden bg-[#FEF2F2] border border-[#FECACA] rounded-2xl p-3.5 space-y-3 shadow-sm">
+                            <div class="flex items-center justify-between border-b border-red-200 pb-2">
                                 <div class="flex items-center gap-2">
-                                    <span class="w-7 h-7 rounded-lg bg-[#2E9578] text-white flex items-center justify-center font-black text-xs">
+                                    <span class="w-7 h-7 rounded-lg bg-[#DC2626] text-white flex items-center justify-center font-black text-xs">
                                         <i class="fa-solid fa-money-bill-transfer"></i>
                                     </span>
                                     <div>
-                                        <h5 class="text-xs font-black text-slate-900">Direct Online Account</h5>
-                                        <span class="text-[10px] text-slate-600">Account: <strong class="text-slate-900 font-bold">YUM WOK Pan Asian</strong></span>
+                                        <h5 class="text-xs font-black text-slate-900">Direct Online Account Details</h5>
+                                        <span class="text-[10px] text-slate-600">Account Title: <strong class="text-[#991B1B] font-bold">Babar Ali</strong></span>
                                     </div>
                                 </div>
-                                <span class="text-[9px] font-black uppercase tracking-wider bg-white text-[#2E9578] border border-[#a8dcce] px-2 py-0.5 rounded">
+                                <span class="text-[9px] font-black uppercase tracking-wider bg-white text-[#DC2626] border border-[#FECACA] px-2 py-0.5 rounded">
                                     Active
                                 </span>
                             </div>
 
-                            <!-- Account 1 -->
-                            <div class="bg-white p-2.5 rounded-xl border border-[#a8dcce] flex items-center justify-between gap-2">
+                            <!-- Account 1: Easypaisa -->
+                            <div class="bg-white p-2.5 rounded-xl border border-red-200 flex items-center justify-between gap-2 shadow-xs">
                                 <div class="min-w-0 flex-1">
-                                    <span class="text-[10px] text-slate-500 block font-medium">EasyPaisa / JazzCash • 0321-1003737</span>
-                                    <span class="text-xs font-black text-[#2E9578] tracking-wider font-mono block">03211003737</span>
+                                    <span class="text-[10px] text-slate-500 block font-bold">Easypaisa • Title: Babar Ali</span>
+                                    <span class="text-xs font-black text-[#DC2626] tracking-wider font-mono block">0304-9891530</span>
                                 </div>
                                 <button 
                                     type="button"
-                                    onclick="copyToClipboard('03211003737', 'accBtn1')" 
-                                    id="accBtn1"
-                                    class="bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition shadow-sm shrink-0"
+                                    onclick="copyToClipboard('03049891530', 'accBtnEasypaisa')" 
+                                    id="accBtnEasypaisa"
+                                    class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition shadow-sm shrink-0"
+                                >
+                                    <i class="fa-regular fa-copy"></i>
+                                    <span>Copy</span>
+                                </button>
+                            </div>
+
+                            <!-- Account 2: JazzCash -->
+                            <div class="bg-white p-2.5 rounded-xl border border-red-200 flex items-center justify-between gap-2 shadow-xs">
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-[10px] text-slate-500 block font-bold">JazzCash • Title: Babar Ali</span>
+                                    <span class="text-xs font-black text-[#DC2626] tracking-wider font-mono block">0309-6332778</span>
+                                </div>
+                                <button 
+                                    type="button"
+                                    onclick="copyToClipboard('03096332778', 'accBtnJazzCash')" 
+                                    id="accBtnJazzCash"
+                                    class="bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-black px-3 py-1.5 rounded-lg flex items-center gap-1.5 active:scale-95 transition shadow-sm shrink-0"
                                 >
                                     <i class="fa-regular fa-copy"></i>
                                     <span>Copy</span>
@@ -675,7 +704,7 @@
                             </div>
 
                             <p class="text-[10px] text-slate-500 italic text-center">
-                                * Transfer payment & share screenshot on WhatsApp after order submission.
+                                * Transfer payment &amp; share screenshot on WhatsApp (0304-9891530) after order submission.
                             </p>
                         </div>
                     </div>
@@ -688,16 +717,17 @@
                         </div>
                         <div class="flex justify-between text-slate-600">
                             <span class="flex items-center gap-1">
-                                Order Mode: <span class="text-[10px] text-[#2E9578] font-bold bg-[#edf8f5] border border-[#a8dcce] px-1.5 py-0.2 rounded" id="billServiceModeText">Home Delivery</span>
+                                <span id="billServiceModeText">Delivery Fee</span>:
+                                <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded" id="billDeliveryZoneBadge">FREE Delivery</span>
                             </span>
-                            <span class="font-bold text-slate-800" id="deliveryFeeLabel">Calculated on Order</span>
+                            <span class="font-bold text-emerald-600" id="deliveryFeeLabel">PKR 0/-</span>
                         </div>
                         <div class="pt-2 border-t border-slate-200 flex justify-between items-center">
                             <div>
-                                <span class="font-black text-slate-900 text-sm block">Estimated Total</span>
-                                <span class="text-[10px] text-slate-500">Freshly prepared & packed</span>
+                                <span class="font-black text-slate-900 text-sm block">Total Amount</span>
+                                <span class="text-[10px] text-slate-500">Live Fresh Preparation</span>
                             </div>
-                            <span class="font-black text-[#2E9578] text-lg font-display" id="billTotal">PKR 0/-</span>
+                            <span class="font-black text-[#DC2626] text-lg font-display" id="billTotal">PKR 0/-</span>
                         </div>
                     </div>
                 </div>
@@ -708,10 +738,10 @@
                 <button 
                     onclick="submitOrderToWhatsApp()" 
                     id="submitWhatsappBtn"
-                    class="w-full bg-[#2E9578] hover:bg-[#247861] text-white font-black text-sm py-4 px-4 rounded-xl shadow-lg shadow-[#2E9578]/30 flex items-center justify-center gap-2 active:scale-[0.98] transition"
+                    class="w-full bg-[#DC2626] hover:bg-[#B91C1C] text-white font-black text-sm py-4 px-4 rounded-xl shadow-lg shadow-red-600/30 flex items-center justify-center gap-2 active:scale-[0.98] transition"
                 >
                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Send Order via WhatsApp (0321-1003737)</span>
+                    <span>Send Order via WhatsApp (0304-9891530)</span>
                 </button>
             </div>
         </div>
@@ -720,497 +750,417 @@
     <!-- ORDER SUCCESS MODAL -->
     <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 p-4">
         <div class="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-modal transform scale-95 transition-all duration-300" id="successModalCard">
-            <div class="w-16 h-16 bg-[#edf8f5] border border-[#a8dcce] text-[#2E9578] rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
+            <div class="w-16 h-16 bg-[#FEF2F2] border border-[#FECACA] text-[#DC2626] rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3 class="font-display font-black text-xl text-slate-900">Order Sent to YUM WOK!</h3>
-            <p class="text-xs text-slate-600 mt-1 mb-4">Your order details were formatted and opened in WhatsApp chat for the YUM WOK kitchen manager to confirm immediately.</p>
+            <h3 class="font-display font-black text-xl text-slate-900">Order Sent to NIAZ TIKKA!</h3>
+            <p class="text-xs text-slate-600 mt-1 mb-4">Your BBQ order details were formatted and opened in WhatsApp chat (0304-9891530) to confirm immediately.</p>
             
             <div class="bg-slate-50 rounded-2xl p-3.5 text-left text-xs mb-4 border border-slate-200 font-mono space-y-1 text-slate-800" id="receiptPreviewBox">
                 <!-- Preview summary -->
             </div>
 
-            <button onclick="closeSuccessModal()" class="w-full bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black py-3 rounded-xl shadow-md">
-                Done & Continue Browsing
+            <button onclick="closeSuccessModal()" class="w-full bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-black py-3 rounded-xl shadow-md">
+                Done &amp; Continue Browsing
             </button>
         </div>
     </div>
 
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-xs font-black px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 transform -translate-y-16 opacity-0 transition-all duration-300 pointer-events-none border border-slate-700">
-        <i class="fa-solid fa-circle-check text-[#2E9578]"></i>
+        <i class="fa-solid fa-circle-check text-[#DC2626]"></i>
         <span id="toastMsg">Added to basket!</span>
     </div>
 
     <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
-        // --- 1. PRODUCT DATABASE FOR YUM WOK (PAN ASIAN) ---
+        // --- 1. PRODUCT DATABASE FOR NIAZ TIKKA ---
         const RESTAURANT_CONFIG = {
-            name: "YUM WOK",
-            subtitle: "PAN ASIAN",
-            tagline: "PAN ASIAN",
-            services: "HOME DELIVERY & TAKE AWAY",
-            address: "NASEMAN E IQBAL FOOD COURT, NEAR MAIN SOCIETY OFFICE, LAHORE",
-            phonePrimary: "0321-1003737",
-            phoneSecondary: "0316-9263696",
-            waPrimary: "923211003737",
-            waSecondary: "923169263696"
+            name: "NIAZ TIKKA",
+            subtitle: "LIVE BBQ & TANDOOR",
+            tagline: "LIVE BBQ & TANDOOR SPECIALIST",
+            services: "FREE DELIVERY & TAKE AWAY",
+            address: "13/14 PLOT COMMERCIAL NASHEMAN E IQBAL PHASE 1, LAHORE",
+            phonePrimary: "0304-9891530",
+            phoneSecondary: "0302-1587253",
+            waPrimary: "923049891530",
+            waSecondary: "923021587253",
+            easypaisa: "03049891530",
+            jazzcash: "03096332778",
+            accountTitle: "Babar Ali"
         };
 
         const MENU_DATA = {
             categories: [
-                { id: 'all', name: 'All Menu', badge: 'Pan Asian' },
-                { id: 'soup', name: 'Soup', badge: 'Hot & Steamy' },
-                { id: 'appetizers', name: 'Appetizers', badge: 'Crispy Tempura & Wings' },
-                { id: 'noodles', name: 'Noodles', badge: 'Wok Chowmein' },
-                { id: 'rice', name: 'Rice', badge: 'Fried & Masala' },
-                { id: 'main_course', name: 'Main Course', badge: 'Served with Rice/Chowmein' }
+                { id: 'all', name: 'All Menu', badge: 'Full Menu' },
+                { id: 'bbq_boti', name: 'BBQ Boti', badge: 'Tender & Juicy' },
+                { id: 'bbq_pieces', name: 'BBQ Pieces', badge: 'Leg & Chest' },
+                { id: 'kababs', name: 'Kababs', badge: 'Chicken & Beef' },
+                { id: 'specials', name: 'Chargha, Neblets & Fish', badge: 'House Specials' },
+                { id: 'platters', name: 'BBQ Platters', badge: 'Mix Variety' },
+                { id: 'tandoor', name: 'Tandoor & Naan', badge: 'Fresh & Hot' },
+                { id: 'drinks', name: 'Drinks', badge: 'Chilled Cold Drinks' }
             ],
             
             items: [
-                // ==================== SOUP ====================
+                // ==================== BBQ BOTI ====================
                 {
-                    id: 'hot_sour_soup',
-                    category: 'soup',
-                    name: 'Hot & Sour Soup',
-                    desc: 'Traditional spicy and tangy Asian soup loaded with chicken shreds, egg blossoms & mushrooms.',
-                    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80',
+                    id: 'malai_boti',
+                    category: 'bbq_boti',
+                    name: 'Malai Boti',
+                    desc: 'Melt-in-mouth chicken boneless chunks marinated in rich fresh cream, mild spices, and barbecued on charcoal.',
+                    image: 'images/malai_boti.jpg',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 280, label: 'Single' },
-                        { name: 'Full Bowl', price: 700, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 450, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 900, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1700, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'chicken_corn_soup',
-                    category: 'soup',
-                    name: 'Chicken Corn Soup',
-                    desc: 'Classic comforting soup with sweet corn kernels, tender shredded chicken & egg drops.',
-                    image: 'https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=400&q=80',
+                    id: 'tikka_boti',
+                    category: 'bbq_boti',
+                    name: 'Tikka Boti',
+                    desc: 'Traditional spicy and smoky chicken boneless cubes barbecued to juicy charcoal-grilled perfection.',
+                    image: 'images/tikka_boti.jpg',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 280, label: 'Single' },
-                        { name: 'Full Bowl', price: 700, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 350, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 700, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1300, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'szechuan_soup',
-                    category: 'soup',
-                    name: 'Szechuan Soup',
-                    desc: 'Fiery and bold Szechuan broth infused with oriental chili oil, chicken, and fresh Asian herbs.',
-                    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=400&q=80',
+                    id: 'green_boti',
+                    category: 'bbq_boti',
+                    name: 'Green Boti',
+                    desc: 'Aromatic green boti marinated with fresh mint, coriander, green chilies, yogurt, and secret house spices.',
+                    image: 'images/green_boti.jpg',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: '1 Pao (250g)', price: 480, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 960, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1800, label: '1 KG' }
+                    ]
+                },
+                {
+                    id: 'sasmi_boti',
+                    category: 'bbq_boti',
+                    name: 'Sasmi Boti',
+                    desc: 'Signature chef-special seasoned chicken boti infused with herbs, sesame seeds, royal spices, and char-grilled flavor.',
+                    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80',
                     isPopular: false,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 350, label: 'Single' },
-                        { name: 'Full Bowl', price: 800, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 480, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 960, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1800, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'thai_clear_soup',
-                    category: 'soup',
-                    name: 'Thai Clear Soup',
-                    desc: 'Aromatic light Thai clear soup flavored with lemongrass, galangal, fresh herbs & chicken.',
-                    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Portion', price: 250, label: 'Single' },
-                        { name: 'Full Bowl', price: 650, label: 'Full' }
-                    ]
-                },
-                {
-                    id: 'wok_special_soup',
-                    category: 'soup',
-                    name: 'WOK Special Soup',
-                    desc: 'Chef’s signature rich Pan-Asian soup packed with chicken, prawns, black mushrooms & exotic spices.',
-                    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=400&q=80',
+                    id: 'cheese_boti',
+                    category: 'bbq_boti',
+                    name: 'Cheese Boti',
+                    desc: 'Succulent chicken boti layered and grilled with melted mozzarella cheese and rich marinade.',
+                    image: 'images/cheese_boti.png',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 350, label: 'Single' },
-                        { name: 'Full Bowl', price: 800, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 500, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 1000, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1950, label: '1 KG' }
                     ]
                 },
 
-                // ==================== APPETIZERS ====================
+                // ==================== BBQ CHICKEN PIECES ====================
                 {
-                    id: 'chicken_tempura',
-                    category: 'appetizers',
-                    name: 'Chicken Tempura',
-                    desc: 'Golden crispy Japanese style battered chicken strips served with special dipping sauce.',
-                    price: 650,
-                    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=400&q=80',
+                    id: 'chicken_breast_piece',
+                    category: 'bbq_pieces',
+                    name: 'Chicken Breast Piece (Tikka)',
+                    desc: 'Large succulent chicken breast / chest quarter grilled over coals with signature tikka masala.',
+                    price: 380,
+                    image: 'images/chicken_breast_piece.jpg',
                     isPopular: true,
                     type: 'fixed'
                 },
                 {
-                    id: 'honey_glazed_wings',
-                    category: 'appetizers',
-                    name: 'Honey Glazed Wings (5pcs)',
-                    desc: '5 pieces of succulent fried wings coated in sweet, spicy, and sticky honey chili glaze.',
-                    price: 650,
-                    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=400&q=80',
+                    id: 'chicken_leg_piece',
+                    category: 'bbq_pieces',
+                    name: 'Chicken Leg Piece (Tikka)',
+                    desc: 'Juicy chicken leg & thigh quarter seasoned in spicy yogurt marinade and cooked on open flames.',
+                    price: 350,
+                    image: 'images/chicken_leg_piece.jpg',
                     isPopular: true,
                     type: 'fixed'
                 },
                 {
-                    id: 'tempura_prawns',
-                    category: 'appetizers',
-                    name: 'Tempura Prawns (5pcs)',
-                    desc: '5 pieces of jumbo prawns deep fried to light golden perfection in airy tempura batter.',
-                    price: 1000,
-                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
+                    id: 'malai_piece_chest',
+                    category: 'bbq_pieces',
+                    name: 'Malai Piece Chest',
+                    desc: 'Whole chicken breast piece smothered in creamy malai glaze, green herbs, and mild smoky flavors.',
+                    price: 480,
+                    image: 'images/malai_piece_chest.jpg',
                     isPopular: true,
                     type: 'fixed'
                 },
                 {
-                    id: 'chicken_momos',
-                    category: 'appetizers',
-                    name: 'Chicken Momos (6pcs)',
-                    desc: '6 pieces of authentic steamed Asian dumplings stuffed with seasoned minced chicken & herbs.',
-                    price: 400,
-                    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'fixed'
-                },
-                {
-                    id: 'chicken_drum_stick',
-                    category: 'appetizers',
-                    name: 'Chicken Drum Stick',
-                    desc: 'Crispy fried marinated chicken drumsticks seasoned with oriental spice mix.',
-                    image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=400&q=80',
+                    id: 'malai_piece_leg',
+                    category: 'bbq_pieces',
+                    name: 'Malai Piece Leg',
+                    desc: 'Tender chicken leg piece marinated in velvety cream and cashew-infused mild spices.',
+                    price: 450,
+                    image: 'images/malai_piece_leg.png',
                     isPopular: false,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Drumstick', price: 450, label: 'Single' },
-                        { name: 'Full Portion', price: 850, label: 'Full' }
-                    ]
-                },
-                {
-                    id: 'dynamite_prawns',
-                    category: 'appetizers',
-                    name: 'Dynamite Prawns',
-                    desc: 'Crispy fried succulent prawns tossed in fiery and creamy signature dynamite sauce.',
-                    price: 950,
-                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
                     type: 'fixed'
                 },
 
-                // ==================== NOODLES ====================
+                // ==================== KABAB CATEGORY ====================
                 {
-                    id: 'chicken_chowmein',
-                    category: 'noodles',
-                    name: 'Chicken Chowmein',
-                    desc: 'Wok-tossed noodles with shredded chicken, crunchy cabbage, carrots & savory soy garlic sauce.',
-                    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80',
+                    id: 'chicken_kabab',
+                    category: 'kababs',
+                    name: 'Chicken Seekh Kabab',
+                    desc: 'Finely minced chicken spiced with green chilies, onions, and traditional roasted seekh spices.',
+                    image: 'images/chicken_kabab.png',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 500, label: 'Single' },
-                        { name: 'Full Portion', price: 900, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 350, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 700, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1400, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'vegetable_chowmein',
-                    category: 'noodles',
-                    name: 'Vegetable Chowmein',
-                    desc: 'Stir-fried wok noodles loaded with garden-fresh bell peppers, cabbage, carrots and spring onions.',
-                    image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=400&q=80',
+                    id: 'cheese_kabab',
+                    category: 'kababs',
+                    name: 'Cheese Seekh Kabab',
+                    desc: 'Chicken seekh kababs stuffed with gooey melted cheese and grilled to perfection.',
+                    image: 'images/cheese_kabab.png',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: '1 Pao (250g)', price: 430, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 850, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1700, label: '1 KG' }
+                    ]
+                },
+                {
+                    id: 'chicken_reshmi_kabab',
+                    category: 'kababs',
+                    name: 'Chicken Reshmi Kabab',
+                    desc: 'Silky smooth chicken mince enriched with cream, butter, and mild aromatic spices.',
+                    image: 'images/reshmi_kabab.png',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: '1 Pao (250g)', price: 420, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 820, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1600, label: '1 KG' }
+                    ]
+                },
+                {
+                    id: 'gola_kabab',
+                    category: 'kababs',
+                    name: 'Gola Kabab',
+                    desc: 'Classic rounded juicy melt-in-the-mouth kababs infused with nutmeg, mace, and charcoal smoke.',
+                    image: 'images/gola_kabab.png',
+                    isPopular: true,
+                    type: 'size_variant',
+                    variants: [
+                        { name: '1 Pao (250g)', price: 400, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 800, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1550, label: '1 KG' }
+                    ]
+                },
+                {
+                    id: 'gola_cheese_kabab',
+                    category: 'kababs',
+                    name: 'Gola Cheese Kabab',
+                    desc: 'Soft and succulent gola kababs loaded with premium melted cheese core.',
+                    image: 'images/gola_cheese_kabab.png',
                     isPopular: false,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 500, label: 'Single' },
-                        { name: 'Full Portion', price: 800, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 480, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 950, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1850, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'wok_special_chowmein',
-                    category: 'noodles',
-                    name: 'Wok Special Chowmein',
-                    desc: 'Chef’s premium wok noodles stir-fried with chicken, beef strips, prawns, mushrooms & special sauce.',
-                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+                    id: 'beef_kabab',
+                    category: 'kababs',
+                    name: 'Beef Seekh Kabab',
+                    desc: 'Authentic Lahori beef seekh kababs crafted with premium beef mince and spicy masala.',
+                    image: 'images/beef_kabab.png',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 700, label: 'Single' },
-                        { name: 'Full Portion', price: 1000, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 450, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 850, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1650, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'stir_fried_chicken_chilli_noodles',
-                    category: 'noodles',
-                    name: 'Stir Fried Chicken Chilli Noodles',
-                    desc: 'Spicy noodles stir-fried in hot wok with chicken shreds, red chili flakes, and scallions.',
-                    image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
+                    id: 'beef_cheese_kabab',
+                    category: 'kababs',
+                    name: 'Beef Cheese Kabab',
+                    desc: 'Richly seasoned beef seekh kababs blended with warm melted cheese filling.',
+                    image: 'images/beef_cheese_kabab.png',
+                    isPopular: false,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 600, label: 'Single' },
-                        { name: 'Full Portion', price: 900, label: 'Full' }
-                    ]
-                },
-                {
-                    id: 'stir_fried_beef_chilli_noodles',
-                    category: 'noodles',
-                    name: 'Stir Fried Beef Chilli Noodles',
-                    desc: 'Tender beef strips wok tossed with spicy noodles, green chilies, onions and rich dark sauce.',
-                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Portion', price: 650, label: 'Single' },
-                        { name: 'Full Portion', price: 950, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 480, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 950, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1850, label: '1 KG' }
                     ]
                 },
 
-                // ==================== RICE ====================
+                // ==================== CHARGHA & FISH ====================
                 {
-                    id: 'egg_fried_rice',
-                    category: 'rice',
-                    name: 'Egg Fried Rice',
-                    desc: 'Classic Asian fragrant long-grain rice stir-fried in wok with scrambled eggs and spring onions.',
-                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
+                    id: 'grilled_chargha',
+                    category: 'specials',
+                    name: 'Grilled Chargha (Full)',
+                    desc: 'Full whole chicken marinated in Lahori special spices and grilled over red-hot coals with lemon juice.',
+                    price: 1500,
+                    image: 'images/grilled_chargha.png',
                     isPopular: true,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Portion', price: 350, label: 'Single' },
-                        { name: 'Full Portion', price: 650, label: 'Full' }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'vegetable_fried_rice',
-                    category: 'rice',
-                    name: 'Vegetable Fried Rice',
-                    desc: 'Light and aromatic wok-fried rice tossed with finely diced fresh vegetables.',
-                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
+                    id: 'neblets',
+                    category: 'specials',
+                    name: 'Neblets',
+                    desc: 'Special grilled spicy neblets packed with coriander, pomegranate seeds, and robust BBQ seasoning.',
+                    image: 'images/neblets.png',
                     isPopular: false,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 300, label: 'Single' },
-                        { name: 'Full Portion', price: 500, label: 'Full' }
+                        { name: '1 Pao (250g)', price: 400, label: '1 Pao' },
+                        { name: 'Half KG (500g)', price: 800, label: 'Half KG' },
+                        { name: '1 KG (1000g)', price: 1550, label: '1 KG' }
                     ]
                 },
                 {
-                    id: 'chicken_fried_rice',
-                    category: 'rice',
-                    name: 'Chicken Fried Rice',
-                    desc: 'Fluffy wok rice tossed with tender seasoned chicken chunks, eggs, carrots and soy seasoning.',
-                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
+                    id: 'grilled_fish',
+                    category: 'specials',
+                    name: 'Grilled Fish',
+                    desc: 'Fresh succulent fish fillet rubbed with traditional BBQ spices, garlic, and charcoal-grilled.',
+                    price: 480,
+                    image: 'images/grilled_fish.png',
                     isPopular: true,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Portion', price: 400, label: 'Single' },
-                        { name: 'Full Portion', price: 700, label: 'Full' }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'masala_rice',
-                    category: 'rice',
-                    name: 'Masala Rice',
-                    desc: 'Spicy fusion oriental rice infused with aromatic masala seasoning and wok char.',
-                    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80',
+                    id: 'fried_fish',
+                    category: 'specials',
+                    name: 'Fried Fish',
+                    desc: 'Golden-crispy seasoned fish piece with crunchy spiced batter and tangy chatpata flavor.',
+                    price: 450,
+                    image: 'images/fried_fish.png',
                     isPopular: false,
-                    type: 'size_variant',
-                    variants: [
-                        { name: 'Single Portion', price: 400, label: 'Single' },
-                        { name: 'Full Portion', price: 700, label: 'Full' }
-                    ]
+                    type: 'fixed'
                 },
+
+                // ==================== BBQ MIX PLATTERS ====================
                 {
-                    id: 'wok_special_rice',
-                    category: 'rice',
-                    name: 'Wok Special Rice',
-                    desc: 'Signature master wok rice stir-fried with chicken, beef, prawns, mushrooms and secret spice blend.',
-                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
+                    id: 'bbq_mix_platter',
+                    category: 'platters',
+                    name: 'BBQ Mix Platter',
+                    desc: 'Grand feast platter containing Malai Boti, Green Boti, Cheese Boti, Chicken Kabab, Cheese Kabab, Tikka Boti, Sasmi Boti, Beef Kabab & Gola Kabab.',
+                    image: 'images/bbq_mix_platter.jpg',
                     isPopular: true,
                     type: 'size_variant',
                     variants: [
-                        { name: 'Single Portion', price: 450, label: 'Single' },
-                        { name: 'Full Portion', price: 750, label: 'Full' }
+                        { name: 'Small Platter (4 Pieces Variety)', price: 2800, label: 'Small (4 Pcs)' },
+                        { name: 'Medium Platter (6 Pieces Variety)', price: 3800, label: 'Medium (6 Pcs)' },
+                        { name: 'Large Platter (8 Pieces Variety)', price: 4800, label: 'Large (8 Pcs)' }
                     ]
                 },
 
-                // ==================== MAIN COURSE ====================
-                // All single entries served with option of Egg Fried Rice, Vegetable Fried Rice, or Vegetable Chowmein
+                // ==================== TANDOOR / NAAN & ROTI ====================
                 {
-                    id: 'kung_pao',
-                    category: 'main_course',
-                    name: 'Kung Pao',
-                    desc: 'Famous Szechuan stir-fry with peanuts, dried red chilies, bell peppers & sweet spicy glaze.',
-                    image: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=400&q=80',
+                    id: 'roti',
+                    category: 'tandoor',
+                    name: 'Roti (Tandoori)',
+                    desc: 'Freshly baked whole wheat tandoori roti straight from the hot clay oven.',
+                    price: 20,
+                    image: 'images/roti.jpg',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'szechuan',
-                    category: 'main_course',
-                    name: 'Szechuan',
-                    desc: 'Spicy wok gravy cooked in pungent Szechuan chili sauce, garlic, ginger, and scallions.',
-                    image: 'https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80',
+                    id: 'roghni_naan',
+                    category: 'tandoor',
+                    name: 'Roghni Naan',
+                    desc: 'Fluffy clay-oven naan brushed with pure butter, sesame seeds, and kalonji.',
+                    price: 100,
+                    image: 'images/roghni_naan.jpg',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'chilli_dry',
-                    category: 'main_course',
-                    name: 'Chilli Dry',
-                    desc: 'Crispy sliced meat stir-fried dry with green chilies, ginger julienne, onions and savory seasoning.',
-                    image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80',
+                    id: 'garlic_naan',
+                    category: 'tandoor',
+                    name: 'Garlic Naan',
+                    desc: 'Crispy aromatic naan topped with fresh chopped garlic, coriander, and golden butter.',
+                    price: 100,
+                    image: 'images/garlic_naan.jpg',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'black_pepper',
-                    category: 'main_course',
-                    name: 'Black Pepper',
-                    desc: 'Aromatic crushed black pepper sauce wok-tossed with onions, capsicum and savory dark soy.',
-                    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80',
+                    id: 'khameeri_roti',
+                    category: 'tandoor',
+                    name: 'Khameeri Roti',
+                    desc: 'Soft, airy, yeast-fermented traditional tandoori khameeri roti.',
+                    price: 30,
+                    image: 'images/khameeri_roti.jpg',
                     isPopular: false,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
+
+                // ==================== DRINKS & BEVERAGES ====================
                 {
-                    id: 'mongolian',
-                    category: 'main_course',
-                    name: 'Mongolian',
-                    desc: 'Caramelized rich brown sauce with sliced meat, abundant scallions and a subtle sweetness.',
-                    image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80',
+                    id: 'next_cola_1_5l',
+                    category: 'drinks',
+                    name: '1.5 Litre Next Cola',
+                    desc: 'Chilled 1.5 Litre bottle of refreshing Next Cola.',
+                    price: 200,
+                    image: 'images/next_cola_1_5l.png',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'manchurian',
-                    category: 'main_course',
-                    name: 'Manchurian',
-                    desc: 'All-time favorite red tangy gravy with hints of garlic, ginger, and fresh green chilies.',
-                    image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80',
+                    id: 'pepsi_1_5l',
+                    category: 'drinks',
+                    name: '1.5 Litre Pepsi',
+                    desc: 'Chilled 1.5 Litre bottle of cold Pepsi.',
+                    price: 220,
+                    image: 'images/pepsi_1_5l.png',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
-                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'sweet_sour',
-                    category: 'main_course',
-                    name: 'Sweet & Sour',
-                    desc: 'Crispy meat chunks smothered in vibrant sweet and sour sauce with pineapple and peppers.',
-                    image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 950, hasSide: true },
-                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1300, hasSide: false }
-                    ]
-                },
-                {
-                    id: 'hot_garlic',
-                    category: 'main_course',
-                    name: 'Hot Garlic',
-                    desc: 'Robust roasted garlic sauce infused with red chili paste, scallions and Asian seasonings.',
-                    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false }
-                    ]
-                },
-                {
-                    id: 'cashew_nut',
-                    category: 'main_course',
-                    name: 'Cashew Nut',
-                    desc: 'Stir-fried chicken with roasted crunchy cashew nuts, mushrooms, onions and light oyster glaze.',
-                    image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=400&q=80',
+                    id: 'sevenup_1_5l',
+                    category: 'drinks',
+                    name: '1.5 Litre 7Up',
+                    desc: 'Chilled 1.5 Litre bottle of crisp, refreshing 7Up.',
+                    price: 220,
+                    image: 'images/sevenup_1_5l.png',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false }
-                    ]
+                    type: 'fixed'
                 },
                 {
-                    id: 'oyster_sauce',
-                    category: 'main_course',
-                    name: 'Oyster Sauce',
-                    desc: 'Savory classic Cantonese stir-fry with rich oyster sauce, black mushrooms and crisp vegetables.',
-                    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80',
-                    isPopular: false,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 700, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 950, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 800, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1100, hasSide: false }
-                    ]
-                },
-                {
-                    id: 'bankok_chilli',
-                    category: 'main_course',
-                    name: 'Bankok Chilli',
-                    desc: 'Thai-style spicy chili stir-fry with fresh basil aroma, lemongrass hints and fiery bird’s eye chili.',
-                    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=400&q=80',
+                    id: 'drink_350ml',
+                    category: 'drinks',
+                    name: 'Cold Drink (350ml)',
+                    desc: '350ml chilled regular bottle (Next Cola / Pepsi / 7Up / Mirinda / Dew).',
+                    price: 80,
+                    image: 'images/drink_350ml.png',
                     isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Chicken (Single)', protein: 'Chicken', size: 'Single', price: 750, hasSide: true },
-                        { name: 'Chicken (Full)', protein: 'Chicken', size: 'Full', price: 1000, hasSide: false },
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false },
-                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
-                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
-                    ]
-                },
-                {
-                    id: 'crispy_sesame_beef',
-                    category: 'main_course',
-                    name: 'Crispy Sesame Beef',
-                    desc: 'Shredded beef or seafood crispy fried, tossed in caramelized sweet chili glaze & toasted sesame.',
-                    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80',
-                    isPopular: true,
-                    type: 'main_course_variant',
-                    variants: [
-                        { name: 'Beef (Single)', protein: 'Beef', size: 'Single', price: 850, hasSide: true },
-                        { name: 'Beef (Full)', protein: 'Beef', size: 'Full', price: 1150, hasSide: false },
-                        { name: 'Sea Food (Single)', protein: 'Sea Food', size: 'Single', price: 900, hasSide: true },
-                        { name: 'Sea Food (Full)', protein: 'Sea Food', size: 'Full', price: 1250, hasSide: false }
-                    ]
+                    type: 'fixed'
                 }
             ]
         };
@@ -1220,11 +1170,11 @@
         let searchQuery = '';
         let cart = [];
         let serviceType = 'Home Delivery'; // or 'Take Away'
+        let deliveryFee = 0; // FREE Delivery as advertised
         
         // Modal state
         let activeModalItem = null;
         let selectedVariantIndex = 0;
-        let selectedComplimentarySide = 'Egg Fried Rice';
         let modalQty = 1;
 
         // --- 3. INITIALIZATION ---
@@ -1251,8 +1201,8 @@
                     onclick="selectCategory('${cat.id}')"
                     class="category-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 ${
                         currentCategory === cat.id 
-                            ? 'active bg-[#2E9578] text-white border-[#1b5c4a] shadow-md' 
-                            : 'bg-slate-100 text-slate-800 border-slate-200 hover:border-[#2E9578]'
+                            ? 'active bg-[#DC2626] text-white border-[#991B1B] shadow-md' 
+                            : 'bg-slate-100 text-slate-800 border-slate-200 hover:border-[#DC2626]'
                     }"
                 >
                     <span>${cat.name}</span>
@@ -1296,8 +1246,8 @@
             renderCategories();
             
             const categoryObj = MENU_DATA.categories.find(c => c.id === catId);
-            document.getElementById('currentSectionTitle').textContent = categoryObj ? categoryObj.name : 'Pan Asian Menu';
-            document.getElementById('currentSectionBadge').textContent = categoryObj ? categoryObj.badge : 'All Dishes';
+            document.getElementById('currentSectionTitle').textContent = categoryObj ? categoryObj.name : 'BBQ & Tandoor Menu';
+            document.getElementById('currentSectionBadge').textContent = categoryObj ? categoryObj.badge : 'All Items';
             
             isNavUserInteracting = true;
             clearTimeout(navUserPauseTimeout);
@@ -1342,21 +1292,12 @@
             container.innerHTML = filtered.map(item => {
                 // Calculate starting price or range
                 let priceDisplay = '';
-                let sideBadge = '';
 
                 if (item.type === 'fixed') {
                     priceDisplay = `PKR ${item.price.toLocaleString()}/-`;
                 } else if (item.variants && item.variants.length > 0) {
                     const minPrice = Math.min(...item.variants.map(v => v.price));
                     priceDisplay = `From PKR ${minPrice.toLocaleString()}/-`;
-                }
-
-                if (item.category === 'main_course') {
-                    sideBadge = `
-                        <span class="text-[9px] font-extrabold text-[#1b5c4a] bg-[#edf8f5] border border-[#a8dcce] px-1.5 py-0.5 rounded flex items-center gap-1 mt-1">
-                            <i class="fa-solid fa-bowl-rice text-[8px]"></i> Includes Rice/Chowmein (Single)
-                        </span>
-                    `;
                 }
 
                 return `
@@ -1367,13 +1308,9 @@
                                 src="${item.image}" 
                                 alt="${item.name}" 
                                 class="w-full h-full object-cover" 
-                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=300&q=80'"
+                                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=300&q=80'"
                             >
-                            ${item.isPopular ? `
-                                <span class="absolute top-1 left-1 bg-[#2E9578] text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded shadow-sm">
-                                    POPULAR
-                                </span>
-                            ` : ''}
+
                         </div>
 
                         <!-- Details -->
@@ -1385,20 +1322,19 @@
                                 <p class="text-[11px] text-slate-500 line-clamp-2 mt-0.5">
                                     ${item.desc}
                                 </p>
-                                ${sideBadge}
                             </div>
 
                             <div class="mt-2 flex items-center justify-between">
                                 <div>
                                     <span class="text-[10px] text-slate-400 font-semibold block uppercase">Price</span>
-                                    <span class="text-sm sm:text-base font-black text-[#2E9578] font-display">
+                                    <span class="text-sm sm:text-base font-black text-[#DC2626] font-display">
                                         ${priceDisplay}
                                     </span>
                                 </div>
 
                                 <button 
                                     onclick="openItemModalById('${item.id}')"
-                                    class="bg-[#2E9578] hover:bg-[#247861] text-white text-xs font-black px-3.5 py-1.5 rounded-xl shadow-sm active:scale-95 transition flex items-center gap-1"
+                                    class="bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-black px-3.5 py-1.5 rounded-xl shadow-sm active:scale-95 transition flex items-center gap-1"
                                 >
                                     <i class="fa-solid fa-plus text-[10px]"></i>
                                     <span>Add</span>
@@ -1436,7 +1372,6 @@
 
             activeModalItem = item;
             selectedVariantIndex = 0;
-            selectedComplimentarySide = 'Egg Fried Rice';
             modalQty = 1;
             document.getElementById('modalQtyDisplay').textContent = modalQty;
 
@@ -1450,12 +1385,12 @@
             container.innerHTML = '';
 
             // Handle Variant Types
-            if (item.type === 'size_variant' || item.type === 'main_course_variant') {
+            if (item.type === 'size_variant') {
                 let variantsHtml = `
                     <div>
                         <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center justify-between">
-                            <span>Select Portion / Protein:</span>
-                            <span class="text-[10px] text-[#2E9578] font-extrabold">${item.variants.length} Options</span>
+                            <span>Select Weight / Size Option:</span>
+                            <span class="text-[10px] text-[#DC2626] font-extrabold">${item.variants.length} Options</span>
                         </h4>
                         <div class="grid grid-cols-1 gap-2">
                             ${item.variants.map((v, idx) => `
@@ -1464,77 +1399,30 @@
                                     id="modalVariantBtn_${idx}"
                                     class="variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between ${
                                         idx === 0 
-                                            ? 'border-[#2E9578] bg-[#edf8f5] text-[#2E9578] shadow-sm' 
-                                            : 'border-slate-200 bg-white text-slate-800 hover:border-[#2E9578]'
+                                            ? 'border-[#DC2626] bg-[#FEF2F2] text-[#DC2626] shadow-sm' 
+                                            : 'border-slate-200 bg-white text-slate-800 hover:border-[#DC2626]'
                                     }"
                                 >
                                     <div class="flex items-center gap-2">
-                                        <span class="w-4 h-4 rounded-full border flex items-center justify-center ${idx === 0 ? 'border-[#2E9578] bg-[#2E9578] text-white' : 'border-slate-300'}">
+                                        <span class="w-4 h-4 rounded-full border flex items-center justify-center ${idx === 0 ? 'border-[#DC2626] bg-[#DC2626] text-white' : 'border-slate-300'}">
                                             ${idx === 0 ? '<i class="fa-solid fa-check text-[8px]"></i>' : ''}
                                         </span>
                                         <span>${v.name}</span>
                                     </div>
-                                    <span class="font-black text-[#2E9578] text-sm">PKR ${v.price.toLocaleString()}/-</span>
+                                    <span class="font-black text-[#DC2626] text-sm">PKR ${v.price.toLocaleString()}/-</span>
                                 </button>
                             `).join('')}
                         </div>
                     </div>
                 `;
-
-                // If Main Course, add complimentary side selection container
-                if (item.category === 'main_course') {
-                    const currentVariant = item.variants[0];
-                    const isSingle = currentVariant && currentVariant.hasSide;
-
-                    variantsHtml += `
-                        <div id="complimentarySideSection" class="${isSingle ? '' : 'hidden'} mt-3 bg-[#edf8f5] border border-[#a8dcce] rounded-2xl p-3.5 space-y-2.5">
-                            <div class="flex items-center justify-between">
-                                <h5 class="text-xs font-black text-[#1b5c4a] flex items-center gap-1.5">
-                                    <i class="fa-solid fa-bowl-rice text-[#2E9578]"></i> Select Free Complimentary Side:
-                                </h5>
-                                <span class="bg-[#2E9578] text-white font-black text-[9px] uppercase px-1.5 py-0.5 rounded">
-                                    Free Included
-                                </span>
-                            </div>
-                            <p class="text-[11px] text-emerald-800 font-medium">All single main entries are served with your choice of 1 complimentary side:</p>
-                            
-                            <div class="grid grid-cols-1 gap-1.5">
-                                <label onclick="selectSideOption('Egg Fried Rice')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-[#2E9578] bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
-                                    <span class="flex items-center gap-2">
-                                        <input type="radio" name="sideChoice" value="Egg Fried Rice" checked class="text-[#2E9578] focus:ring-[#2E9578]">
-                                        <span>🥢 Egg Fried Rice</span>
-                                    </span>
-                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
-                                </label>
-
-                                <label onclick="selectSideOption('Vegetable Fried Rice')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
-                                    <span class="flex items-center gap-2">
-                                        <input type="radio" name="sideChoice" value="Vegetable Fried Rice" class="text-[#2E9578] focus:ring-[#2E9578]">
-                                        <span>🥢 Vegetable Fried Rice</span>
-                                    </span>
-                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
-                                </label>
-
-                                <label onclick="selectSideOption('Vegetable Chowmein')" class="side-choice-card cursor-pointer p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs font-bold text-slate-900 transition">
-                                    <span class="flex items-center gap-2">
-                                        <input type="radio" name="sideChoice" value="Vegetable Chowmein" class="text-[#2E9578] focus:ring-[#2E9578]">
-                                        <span>🥢 Vegetable Chowmein</span>
-                                    </span>
-                                    <span class="text-[10px] text-[#2E9578] font-extrabold">Included</span>
-                                </label>
-                            </div>
-                        </div>
-                    `;
-                }
-
                 container.innerHTML = variantsHtml;
 
             } else {
                 // Fixed item
                 container.innerHTML = `
                     <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs text-slate-600">
-                        <span class="font-bold text-slate-900 block mb-1">Standard Full Portion</span>
-                        Freshly prepared in traditional oriental wok with authentic ingredients and hot spices!
+                        <span class="font-bold text-slate-900 block mb-1">Fresh Single Portion</span>
+                        Freshly prepared over live charcoal / tandoor with authentic house spices and marinades!
                     </div>
                 `;
             }
@@ -1564,43 +1452,17 @@
 
             document.querySelectorAll('.variant-btn').forEach((btn, i) => {
                 if (i === index) {
-                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-[#2E9578] bg-[#edf8f5] text-[#2E9578] shadow-sm';
+                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-[#DC2626] bg-[#FEF2F2] text-[#DC2626] shadow-sm';
                     const iconSpan = btn.querySelector('span:first-child');
                     if (iconSpan) iconSpan.innerHTML = '<i class="fa-solid fa-check text-[8px]"></i>';
                 } else {
-                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-slate-200 bg-white text-slate-800 hover:border-[#2E9578]';
+                    btn.className = 'variant-btn w-full text-left p-3 rounded-xl border text-xs font-bold transition flex items-center justify-between border-slate-200 bg-white text-slate-800 hover:border-[#DC2626]';
                     const iconSpan = btn.querySelector('span:first-child');
                     if (iconSpan) iconSpan.innerHTML = '';
                 }
             });
 
-            // Toggle complimentary side section if main course
-            const sideSection = document.getElementById('complimentarySideSection');
-            if (sideSection && activeModalItem.category === 'main_course') {
-                const variant = activeModalItem.variants[index];
-                if (variant && variant.hasSide) {
-                    sideSection.classList.remove('hidden');
-                } else {
-                    sideSection.classList.add('hidden');
-                }
-            }
-
             updateModalPriceDisplay();
-        }
-
-        function selectSideOption(sideName) {
-            selectedComplimentarySide = sideName;
-            document.querySelectorAll('.side-choice-card').forEach(card => {
-                const radio = card.querySelector('input[type="radio"]');
-                if (radio && radio.value === sideName) {
-                    radio.checked = true;
-                    card.classList.add('border-[#2E9578]', 'bg-[#edf8f5]/60');
-                    card.classList.remove('border-slate-200');
-                } else {
-                    card.classList.remove('border-[#2E9578]', 'bg-[#edf8f5]/60');
-                    card.classList.add('border-slate-200');
-                }
-            });
         }
 
         function changeModalQty(delta) {
@@ -1634,14 +1496,10 @@
             if (activeModalItem.variants && activeModalItem.variants.length > 0) {
                 const v = activeModalItem.variants[selectedVariantIndex];
                 price = v.price;
-                titleName = `${activeModalItem.name} - ${v.name}`;
-
-                if (activeModalItem.category === 'main_course' && v.hasSide) {
-                    optionsText = `Side: ${selectedComplimentarySide}`;
-                }
+                titleName = `${activeModalItem.name} (${v.name})`;
             }
 
-            const cartItemId = `${activeModalItem.id}_${selectedVariantIndex}_${optionsText}`;
+            const cartItemId = `${activeModalItem.id}_${selectedVariantIndex}`;
 
             const existingIndex = cart.findIndex(c => c.cartItemId === cartItemId);
             if (existingIndex > -1) {
@@ -1669,31 +1527,29 @@
             const btnDelivery = document.getElementById('serviceBtnDelivery');
             const btnTakeAway = document.getElementById('serviceBtnTakeAway');
             const addressContainer = document.getElementById('addressFieldContainer');
-            const billServiceModeText = document.getElementById('billServiceModeText');
 
             if (type === 'Home Delivery') {
-                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition';
-                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition';
-                addressContainer.classList.remove('hidden');
-                billServiceModeText.textContent = 'Home Delivery';
+                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-[#DC2626] bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center gap-1.5 transition font-bold';
+                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition font-bold';
+                if (addressContainer) addressContainer.classList.remove('hidden');
             } else {
-                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-[#2E9578] bg-[#edf8f5] text-[#2E9578] flex items-center justify-center gap-1.5 transition';
-                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition';
-                addressContainer.classList.add('hidden');
-                billServiceModeText.textContent = 'Take Away';
+                btnTakeAway.className = 'p-2.5 rounded-xl border-2 border-[#DC2626] bg-[#FEF2F2] text-[#DC2626] flex items-center justify-center gap-1.5 transition font-bold';
+                btnDelivery.className = 'p-2.5 rounded-xl border-2 border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center gap-1.5 transition font-bold';
+                if (addressContainer) addressContainer.classList.add('hidden');
             }
+            updateCartUI();
         }
 
         // --- 9. CART & STORAGE LOGIC ---
         function saveCartToStorage() {
             try {
-                localStorage.setItem('yum_wok_cart', JSON.stringify(cart));
+                localStorage.setItem('niaz_tikka_cart', JSON.stringify(cart));
             } catch (e) {}
         }
 
         function loadCartFromStorage() {
             try {
-                const saved = localStorage.getItem('yum_wok_cart');
+                const saved = localStorage.getItem('niaz_tikka_cart');
                 if (saved) {
                     cart = JSON.parse(saved);
                 }
@@ -1704,13 +1560,16 @@
             const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
             const totalPrice = cart.reduce((acc, item) => acc + (item.unitPrice * item.qty), 0);
 
+            // Free Delivery
+            const grandTotal = totalPrice;
+
             // Update floating cart bar
             const floatingBar = document.getElementById('floatingCartBar');
             const floatingBadge = document.getElementById('floatingCartBadge');
             const floatingTotal = document.getElementById('floatingCartTotal');
 
-            floatingBadge.textContent = totalQty;
-            floatingTotal.textContent = `PKR ${totalPrice.toLocaleString()}/-`;
+            if (floatingBadge) floatingBadge.textContent = totalQty;
+            if (floatingTotal) floatingTotal.textContent = `PKR ${grandTotal.toLocaleString()}/-`;
 
             if (totalQty > 0) {
                 floatingBar.classList.remove('translate-y-24', 'opacity-0');
@@ -1719,7 +1578,7 @@
             }
 
             // Update Drawer items list
-            document.getElementById('drawerItemCountText').textContent = `${totalQty} dish${totalQty !== 1 ? 'es' : ''} selected`;
+            document.getElementById('drawerItemCountText').textContent = `${totalQty} item${totalQty !== 1 ? 's' : ''} selected`;
             
             const cartItemsList = document.getElementById('cartItemsList');
             const emptyCartView = document.getElementById('emptyCartView');
@@ -1737,8 +1596,7 @@
                     <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200 flex items-center justify-between gap-2 text-xs">
                         <div class="flex-1 min-w-0">
                             <h5 class="font-bold text-slate-900 truncate">${item.name}</h5>
-                            ${item.optionsText ? `<p class="text-[10px] text-[#2E9578] font-extrabold">${item.optionsText}</p>` : ''}
-                            <div class="text-xs font-black text-[#2E9578] mt-0.5">
+                            <div class="text-xs font-black text-[#DC2626] mt-0.5">
                                 PKR ${(item.unitPrice * item.qty).toLocaleString()}/-
                             </div>
                         </div>
@@ -1748,8 +1606,8 @@
                             <button onclick="updateCartItemQty(${index}, -1)" class="w-6 h-6 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-[10px] font-bold">
                                 <i class="fa-solid fa-minus"></i>
                             </button>
-                            <span class="w-6 text-center font-bold text-xs text-[#2E9578]">${item.qty}</span>
-                            <button onclick="updateCartItemQty(${index}, 1)" class="w-6 h-6 rounded-lg bg-[#2E9578] text-white flex items-center justify-center text-[10px] font-bold">
+                            <span class="w-6 text-center font-bold text-xs text-[#DC2626]">${item.qty}</span>
+                            <button onclick="updateCartItemQty(${index}, 1)" class="w-6 h-6 rounded-lg bg-[#DC2626] text-white flex items-center justify-center text-[10px] font-bold">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
@@ -1758,8 +1616,15 @@
             }
 
             // Update Bill Summary
-            document.getElementById('billSubtotal').textContent = `PKR ${totalPrice.toLocaleString()}/-`;
-            document.getElementById('billTotal').textContent = `PKR ${totalPrice.toLocaleString()}/-`;
+            const billSubtotal = document.getElementById('billSubtotal');
+            const deliveryFeeLabel = document.getElementById('deliveryFeeLabel');
+            const billDeliveryZoneBadge = document.getElementById('billDeliveryZoneBadge');
+            const billTotal = document.getElementById('billTotal');
+
+            if (billSubtotal) billSubtotal.textContent = `PKR ${totalPrice.toLocaleString()}/-`;
+            if (deliveryFeeLabel) deliveryFeeLabel.textContent = 'PKR 0/- (Free)';
+            if (billDeliveryZoneBadge) billDeliveryZoneBadge.textContent = 'FREE Delivery';
+            if (billTotal) billTotal.textContent = `PKR ${grandTotal.toLocaleString()}/-`;
         }
 
         function updateCartItemQty(index, delta) {
@@ -1820,10 +1685,10 @@
                 const btn = document.getElementById(btnId);
                 const orig = btn.innerHTML;
                 btn.innerHTML = `<i class="fa-solid fa-check"></i><span>Copied!</span>`;
-                btn.classList.replace('bg-[#2E9578]', 'bg-[#1b5c4a]');
+                btn.classList.add('bg-slate-800');
                 setTimeout(() => {
                     btn.innerHTML = orig;
-                    btn.classList.replace('bg-[#1b5c4a]', 'bg-[#2E9578]');
+                    btn.classList.remove('bg-slate-800');
                 }, 2000);
             });
         }
@@ -1860,10 +1725,11 @@
             }
 
             const totalPrice = cart.reduce((acc, item) => acc + (item.unitPrice * item.qty), 0);
+            const grandTotal = totalPrice;
 
             // Construct clean formatted WhatsApp text
-            let message = `*NEW ORDER - YUM WOK (PAN ASIAN)*\n`;
-            message += `_Taste The Orient • Lahore_\n`;
+            let message = `*NEW ORDER - NIAZ TIKKA*\n`;
+            message += `_Live BBQ & Tandoor • Lahore_\n`;
             message += `----------------------------\n`;
             message += `*ORDER TYPE:* ${serviceType.toUpperCase()}\n`;
             message += `*CUSTOMER:* ${custName} (${custPhone})\n`;
@@ -1871,41 +1737,42 @@
                 message += `*DELIVERY ADDRESS:*\n${address}\n`;
             }
             message += `----------------------------\n`;
-            message += `*ORDER DISHES:*\n`;
+            message += `*ITEMS ORDERED:*\n`;
 
             cart.forEach((item, i) => {
                 message += `${i+1}. *${item.name}* x ${item.qty}\n`;
-                if (item.optionsText) {
-                    message += `   _${item.optionsText}_\n`;
-                }
                 message += `   Price: PKR ${(item.unitPrice * item.qty).toLocaleString()}/-\n`;
             });
 
             message += `----------------------------\n`;
-            message += `*ESTIMATED TOTAL:* PKR ${totalPrice.toLocaleString()}/-\n`;
+            message += `*TOTAL AMOUNT:* PKR ${grandTotal.toLocaleString()}/- (FREE Delivery)\n`;
             message += `----------------------------\n`;
 
             if (notes) {
-                message += `*KITCHEN INSTRUCTIONS:* ${notes}\n`;
+                message += `*SPECIAL INSTRUCTIONS:* ${notes}\n`;
             }
 
             message += `*PAYMENT METHOD:* ${payment}\n`;
+            if (payment !== 'Cash on Delivery') {
+                message += `_Account Title: Babar Ali_\n`;
+                message += `_Easypaisa: 0304-9891530 | JazzCash: 0309-6332778_\n`;
+            }
             message += `----------------------------\n`;
-            message += `_Sent via YUM WOK Digital Pan Asian Menu_`;
+            message += `_Sent via NIAZ TIKKA Digital Ordering Menu_`;
 
-            // Open WhatsApp link
+            // Open WhatsApp link (03049891530)
             const encodedMsg = encodeURIComponent(message);
             const waUrl = `https://wa.me/${RESTAURANT_CONFIG.waPrimary}?text=${encodedMsg}`;
             window.open(waUrl, '_blank');
 
             // Show Receipt Preview Modal
             document.getElementById('receiptPreviewBox').innerHTML = `
-                <div><strong>Service:</strong> ${serviceType}</div>
+                <div><strong>Service:</strong> ${serviceType} (FREE Delivery)</div>
                 <div><strong>Customer:</strong> ${custName} (${custPhone})</div>
                 ${serviceType === 'Home Delivery' ? `<div><strong>Address:</strong> ${address}</div>` : ''}
                 <div><strong>Payment:</strong> ${payment}</div>
-                <div><strong>Total Items:</strong> ${cart.length} dish(es)</div>
-                <div class="text-[#2E9578] font-bold"><strong>Total Bill:</strong> PKR ${totalPrice.toLocaleString()}/-</div>
+                <div><strong>Total Items:</strong> ${cart.length} item(s)</div>
+                <div class="text-[#DC2626] font-bold text-sm pt-1"><strong>Total Payable:</strong> PKR ${grandTotal.toLocaleString()}/-</div>
             `;
 
             closeCartDrawer();
@@ -1944,44 +1811,25 @@
             }, 2500);
         }
 
-        // --- 13. LIVE SHOP OPEN / CLOSED STATUS LOGIC (GREEN / RED LIGHT) ---
-        let isShopOpen = true;
+        // --- 13. LIVE SHOP OPEN / CLOSED STATUS LOGIC (GREEN 4PM-2AM / RED 2AM-4PM) ---
+        let isShopOpen = false;
 
         function checkAutomatedShopHours() {
-            // Standard Asian restaurant hours: 12:00 PM (12) to 01:00 AM (0)
+            // Strictly automated: 04:00 PM (16:00) to 02:00 AM (02:00)
             const now = new Date();
             const hours = now.getHours();
-            return (hours >= 12 || hours === 0);
+            return (hours >= 16 || hours < 2);
         }
 
         function initShopStatus() {
-            const saved = localStorage.getItem('yumwok_shop_open_status');
-            if (saved !== null) {
-                isShopOpen = (saved === 'true');
-            } else {
-                isShopOpen = checkAutomatedShopHours();
-            }
+            isShopOpen = checkAutomatedShopHours();
             updateShopStatusUI();
             
-            // Recheck every minute if automatic
+            // Recheck every 30 seconds automatically with real-time clock
             setInterval(() => {
-                if (localStorage.getItem('yumwok_shop_open_status') === null) {
-                    isShopOpen = checkAutomatedShopHours();
-                    updateShopStatusUI();
-                }
-            }, 60000);
-        }
-
-        function toggleShopStatus() {
-            isShopOpen = !isShopOpen;
-            localStorage.setItem('yumwok_shop_open_status', isShopOpen.toString());
-            updateShopStatusUI();
-            
-            if (isShopOpen) {
-                showToast("🟢 Shop is OPEN: Green light active, accepting orders!");
-            } else {
-                showToast("🔴 Shop is CLOSED: Red light active.");
-            }
+                isShopOpen = checkAutomatedShopHours();
+                updateShopStatusUI();
+            }, 30000);
         }
 
         function updateShopStatusUI() {
@@ -1994,27 +1842,27 @@
             if (!badge || !light || !text) return;
 
             if (isShopOpen) {
-                // Green Light - Open
-                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-sm active:scale-95';
+                // Green Light - Open (4:00 PM to 2:00 AM)
+                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm';
                 light.className = 'w-2.5 h-2.5 rounded-full status-light-green inline-block shrink-0';
                 text.textContent = 'OPEN';
-                badge.setAttribute('title', 'Shop is OPEN (Green light) • Click to toggle');
+                badge.setAttribute('title', 'Shop is OPEN (04:00 PM – 02:00 AM)');
                 
                 if (hoursDot) hoursDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block';
                 if (hoursNotice) {
-                    hoursNotice.textContent = 'Open Now (12:00 PM – 01:00 AM)';
+                    hoursNotice.textContent = 'Open Now (04:00 PM – 02:00 AM)';
                     hoursNotice.className = 'text-emerald-700 font-bold';
                 }
             } else {
-                // Red Light - Closed
-                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-red-50 text-red-700 border-red-300 hover:bg-red-100 shadow-sm active:scale-95';
+                // Red Light - Closed (After 2:00 AM until 4:00 PM)
+                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-red-50 text-red-700 border-red-300 shadow-sm';
                 light.className = 'w-2.5 h-2.5 rounded-full status-light-red inline-block shrink-0';
                 text.textContent = 'CLOSED';
-                badge.setAttribute('title', 'Shop is CLOSED (Red light) • Click to toggle');
+                badge.setAttribute('title', 'Shop is CLOSED (Opens at 04:00 PM)');
                 
                 if (hoursDot) hoursDot.className = 'w-1.5 h-1.5 rounded-full bg-red-500 inline-block';
                 if (hoursNotice) {
-                    hoursNotice.textContent = 'Closed Now (Opens 12:00 PM)';
+                    hoursNotice.textContent = 'Closed Now (Opens 04:00 PM)';
                     hoursNotice.className = 'text-red-600 font-bold';
                 }
             }
