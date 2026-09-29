@@ -598,32 +598,8 @@
                         </button>
                     </div>
 
-                    <!-- Customer Contact & Address Input Fields -->
+                    <!-- Customer Address Input Field -->
                     <div class="space-y-2.5 text-xs">
-                        <div>
-                            <label class="block text-slate-800 font-bold mb-1">
-                                Customer Name <span class="text-[#DC2626]">*</span>
-                            </label>
-                            <input 
-                                type="text" 
-                                id="custName" 
-                                placeholder="Your Name" 
-                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#DC2626] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
-                            >
-                        </div>
-
-                        <div>
-                            <label class="block text-slate-800 font-bold mb-1">
-                                Phone Number <span class="text-[#DC2626]">*</span>
-                            </label>
-                            <input 
-                                type="tel" 
-                                id="custPhone" 
-                                placeholder="e.g. 0304-XXXXXXX" 
-                                class="w-full bg-slate-50 text-slate-900 border border-slate-300 focus:border-[#DC2626] rounded-xl px-3 py-2.5 text-xs focus:outline-none"
-                            >
-                        </div>
-
                         <div id="addressFieldContainer">
                             <label class="block text-slate-800 font-bold mb-1">
                                 Delivery Address / Landmark <span class="text-[#DC2626]">*</span>
@@ -1700,23 +1676,9 @@
                 return;
             }
 
-            const custName = document.getElementById('custName').value.trim();
-            const custPhone = document.getElementById('custPhone').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
-            const notes = document.getElementById('custNotes').value.trim();
+            const address = (document.getElementById('custAddress') ? document.getElementById('custAddress').value.trim() : '');
+            const notes = (document.getElementById('custNotes') ? document.getElementById('custNotes').value.trim() : '');
             const payment = document.getElementById('custPayment').value;
-
-            if (!custName) {
-                showToast("Please enter your name!");
-                document.getElementById('custName').focus();
-                return;
-            }
-
-            if (!custPhone) {
-                showToast("Please enter your phone number!");
-                document.getElementById('custPhone').focus();
-                return;
-            }
 
             if (serviceType === 'Home Delivery' && !address) {
                 showToast("Please enter your delivery address!");
@@ -1732,7 +1694,6 @@
             message += `_Live BBQ & Tandoor • Lahore_\n`;
             message += `----------------------------\n`;
             message += `*ORDER TYPE:* ${serviceType.toUpperCase()}\n`;
-            message += `*CUSTOMER:* ${custName} (${custPhone})\n`;
             if (serviceType === 'Home Delivery') {
                 message += `*DELIVERY ADDRESS:*\n${address}\n`;
             }
@@ -1768,7 +1729,6 @@
             // Show Receipt Preview Modal
             document.getElementById('receiptPreviewBox').innerHTML = `
                 <div><strong>Service:</strong> ${serviceType} (FREE Delivery)</div>
-                <div><strong>Customer:</strong> ${custName} (${custPhone})</div>
                 ${serviceType === 'Home Delivery' ? `<div><strong>Address:</strong> ${address}</div>` : ''}
                 <div><strong>Payment:</strong> ${payment}</div>
                 <div><strong>Total Items:</strong> ${cart.length} item(s)</div>
