@@ -197,10 +197,10 @@
         <!-- TOP STICKY HEADER -->
         <header class="sticky top-0 z-40 glass-header border-b border-slate-200 transition-all duration-200 pt-2 sm:pt-3">
             <!-- Brand & Quick Actions (WhatsApp & Contact) -->
-            <div class="px-4 pt-2.5 pb-2 flex items-center justify-between gap-2">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <!-- Business Name: Simple clean ALL CAPS, no vector logo -->
+            <div class="px-4 pt-2.5 pb-2 flex items-center justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <!-- Business Name: Simple clean ALL CAPS -->
                         <h1 class="font-display font-black text-2xl sm:text-3xl text-slate-900 leading-none tracking-tight">
                             NIAZ <span class="text-[#DC2626]">TIKKA</span>
                         </h1>
@@ -208,17 +208,22 @@
                         <div 
                             id="shopStatusBadge" 
                             title="Live Shop Status (04:00 PM – 02:00 AM)" 
-                            class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm"
+                            class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-black border transition-all duration-300 select-none bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm"
                         >
-                            <span id="shopStatusLight" class="w-2.5 h-2.5 rounded-full status-light-green inline-block shrink-0"></span>
+                            <span id="shopStatusLight" class="w-2 h-2 rounded-full status-light-green inline-block shrink-0"></span>
                             <span id="shopStatusText" class="tracking-wide">OPEN</span>
                         </div>
                     </div>
-                    <p class="text-[11px] text-slate-500 font-semibold mt-1 flex items-center gap-1.5">
-                        <span class="text-[#DC2626] font-black tracking-wide uppercase">LIVE BBQ &amp; TANDOOR</span>
-                        <span>•</span>
-                        <span class="text-slate-600 truncate max-w-[170px] sm:max-w-none">Nasheman-e-Iqbal Phase 1, Lahore</span>
-                    </p>
+                    <!-- Subtitle & Address Under Logo -->
+                    <div class="mt-1 flex flex-col gap-0.5">
+                        <div class="text-[11px] text-[#DC2626] font-black tracking-wide uppercase">
+                            LIVE BBQ &amp; TANDOOR SPECIALIST
+                        </div>
+                        <div class="text-[11px] text-slate-600 font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-[#DC2626] text-[10px] shrink-0"></i>
+                            <span class="leading-tight">13/14 Commercial, Nasheman-e-Iqbal Phase 1, Lahore</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Quick Action Buttons: Phone Modal & WhatsApp -->
